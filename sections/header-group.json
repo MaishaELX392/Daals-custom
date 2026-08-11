@@ -95,21 +95,6 @@
         "text_color_transparent_collection": ""
       }
     },
-    "custom_header_gTpdq8": {
-      "type": "custom-header",
-      "name": "Custom header",
-      "settings": {
-        "logo_width": 150,
-        "search_placeholder": "What are you looking for?",
-        "phone_number": "02477 180 023",
-        "opening_hours": "8:30am - 5.30pm",
-        "wishlist_url": "",
-        "cart_text": "Basket",
-        "menu": "",
-        "text_color": "#FFFFFF",
-        "top_offset": 42
-      }
-    },
     "header_announcements_AhqBRH": {
       "type": "header-announcements",
       "blocks": {
@@ -154,7 +139,6 @@
   },
   "order": [
     "header_section",
-    "custom_header_gTpdq8",
     "header_announcements_AhqBRH"
   ]
 }

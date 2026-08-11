@@ -1,14 +1,20 @@
+/* =========================================
+   CUSTOM SEARCH
+   ========================================= */
+
 .custom-search {
   display: block;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
-
 
 .custom-search__form {
+  display: block;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
-
 
 .custom-search__field {
   position: relative;
@@ -19,44 +25,100 @@
   width: 100%;
   height: 40px;
 
+  margin: 0;
+  padding: 0;
+
+  border: 0;
   border-radius: 22px;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: none !important;
 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
 
 
+/* =========================================
+   INPUT
+   ========================================= */
+
 .custom-search__input {
-  width: 100%;
-  height: 100%;
+  display: block !important;
 
-  padding: 0 18px 0 45px;
+  width: 100% !important;
+  min-width: 0;
 
-  border: 0;
-  outline: 0;
+  height: 40px !important;
 
-  background: transparent;
+  margin: 0 !important;
+  padding: 0 18px 0 45px !important;
 
-  color: #ffffff;
+  border: 0 !important;
+  border-radius: 22px !important;
+  outline: none !important;
+
+  background: transparent !important;
+  background-color: transparent !important;
+
+  box-shadow: none !important;
+
+  color: var(--header-text-color, #ffffff) !important;
 
   font-family: inherit;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.2;
+
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 
+/* Remove browser search styling */
+
+.custom-search__input::-webkit-search-decoration,
+.custom-search__input::-webkit-search-cancel-button,
+.custom-search__input::-webkit-search-results-button,
+.custom-search__input::-webkit-search-results-decoration {
+  display: none;
+}
+
+
+/* Placeholder */
+
 .custom-search__input::placeholder {
-  color: #ffffff;
+  color: var(--header-text-color, #ffffff) !important;
   opacity: 1;
 }
 
 
+/* Focus */
+
+.custom-search__input:focus {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.custom-search__input:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7) !important;
+  outline-offset: 2px;
+}
+
+
+/* =========================================
+   SEARCH BUTTON
+   ========================================= */
+
 .custom-search__button {
   position: absolute;
+
   left: 13px;
   top: 50%;
+
+  z-index: 2;
 
   display: flex;
   align-items: center;
@@ -65,33 +127,53 @@
   width: 22px;
   height: 22px;
 
+  margin: 0;
   padding: 0;
 
   transform: translateY(-50%);
 
-  border: 0;
+  border: 0 !important;
   outline: 0;
 
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none !important;
 
-  color: #ffffff;
+  color: var(--header-text-color, #ffffff);
 
   cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
 }
 
+.custom-search__button:hover {
+  background: transparent !important;
+  color: var(--header-text-color, #ffffff);
+}
 
-.custom-search__button svg {
+.custom-search__button:focus {
+  background: transparent !important;
+  outline: none;
+}
+
+.custom-search__button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+.custom-search__icon {
   display: block;
+
+  width: 21px;
+  height: 21px;
+
+  flex-shrink: 0;
 }
 
 
-.custom-search__input:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 2px;
-}
-
-
-/* Mobile */
+/* =========================================
+   MOBILE
+   ========================================= */
 
 @media screen and (max-width: 749px) {
 
@@ -99,19 +181,22 @@
     width: 40px;
   }
 
+  .custom-search__form {
+    width: 40px;
+  }
 
   .custom-search__field {
     width: 40px;
     height: 40px;
 
-    background: transparent;
+    background: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-
 
   .custom-search__input {
-    display: none;
+    display: none !important;
   }
-
 
   .custom-search__button {
     position: static;
@@ -122,4 +207,8 @@
     transform: none;
   }
 
+  .custom-search__icon {
+    width: 21px;
+    height: 21px;
+  }
 }

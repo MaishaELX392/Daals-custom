@@ -1,6 +1,4 @@
-{{ 'custom-search.css' | asset_url | stylesheet_tag }}
-
-<search-form class="custom-search">
+<div class="custom-search">
   <form
     action="{{ routes.search_url }}"
     method="get"
@@ -15,6 +13,7 @@
         aria-label="Search"
       >
         <svg
+          class="custom-search__icon"
           width="21"
           height="21"
           viewBox="0 0 24 24"
@@ -45,6 +44,8 @@
         placeholder="{{ search_placeholder | default: 'What are you looking for?' | escape }}"
         class="custom-search__input"
         autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
         aria-label="{{ search_placeholder | default: 'What are you looking for?' | escape }}"
       >
 
@@ -52,8 +53,8 @@
         type="hidden"
         name="options[prefix]"
         value="last"
-      >
+    >
 
     </div>
   </form>
-</search-form>
+</div>

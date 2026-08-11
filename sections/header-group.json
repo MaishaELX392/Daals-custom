@@ -127,16 +127,16 @@
       ],
       "name": "Announcement bar",
       "settings": {
-        "background_color": "#774D43",
-        "text_color": "#FFFFFF",
+        "background_color": "#774d43",
+        "text_color": "#ffffff",
         "section_width": "full-width",
         "divider_width": 0,
-        "divider_color": "#774D43",
+        "divider_color": "#774d43",
         "padding-block-start": 10,
         "padding-block-end": 10
       }
     },
-    "custom_header_xfdUFg": {
+    "custom_header_VHAzXJ": {
       "type": "custom-header",
       "name": "Custom header",
       "settings": {
@@ -155,6 +155,6 @@
   "order": [
     "header_section",
     "header_announcements_AhqBRH",
-    "custom_header_xfdUFg"
+    "custom_header_VHAzXJ"
   ]
 }

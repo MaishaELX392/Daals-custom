@@ -11,19 +11,6 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
-    "header_announcements_9jGBFp": {
-      "type": "header-announcements",
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "background_color": "{{ settings.color_palette.background }}",
-        "text_color": "#ffffff",
-        "section_width": "page-width",
-        "divider_width": 1,
-        "divider_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -108,7 +95,7 @@
         "text_color_transparent_collection": ""
       }
     },
-    "custom_header_EBkFKL": {
+    "custom_header_gTpdq8": {
       "type": "custom-header",
       "name": "Custom header",
       "settings": {
@@ -122,11 +109,52 @@
         "text_color": "#FFFFFF",
         "top_offset": 42
       }
+    },
+    "header_announcements_AhqBRH": {
+      "type": "header-announcements",
+      "blocks": {
+        "announcement_i4NCYt": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free delivery over £99",
+            "link": ""
+          }
+        },
+        "announcement_bzYH9r": {
+          "type": "announcement",
+          "settings": {
+            "text": "Over 55,000 5-star reviews",
+            "link": ""
+          }
+        },
+        "announcement_6xDMhW": {
+          "type": "announcement",
+          "settings": {
+            "text": "Exclusive daals designs",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_i4NCYt",
+        "announcement_bzYH9r",
+        "announcement_6xDMhW"
+      ],
+      "name": "Announcement bar",
+      "settings": {
+        "background_color": "#774D43",
+        "text_color": "#FFFFFF",
+        "section_width": "full-width",
+        "divider_width": 0,
+        "divider_color": "#774D43",
+        "padding-block-start": 10,
+        "padding-block-end": 10
+      }
     }
   },
   "order": [
-    "header_announcements_9jGBFp",
     "header_section",
-    "custom_header_EBkFKL"
+    "custom_header_gTpdq8",
+    "header_announcements_AhqBRH"
   ]
 }

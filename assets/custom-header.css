@@ -11,16 +11,14 @@
   pointer-events: none;
 }
 
-
 .custom-header__container {
   width: min(calc(100% - 80px), 1440px);
   margin: 0 auto;
 }
 
-
 /* =========================================
    MAIN HEADER
-   ========================================= */
+========================================= */
 
 .custom-header__main {
   display: grid;
@@ -30,10 +28,9 @@
   min-height: 88px;
 }
 
-
 /* =========================================
    SEARCH
-   ========================================= */
+========================================= */
 
 .custom-header__search {
   display: flex;
@@ -44,10 +41,9 @@
   width: 398px;
 }
 
-
 /* =========================================
    LOGO
-   ========================================= */
+========================================= */
 
 .custom-header__logo {
   display: flex;
@@ -57,7 +53,6 @@
   justify-self: center;
 }
 
-
 .custom-header__logo-link {
   display: flex;
   align-items: center;
@@ -65,7 +60,6 @@
 
   pointer-events: auto;
 }
-
 
 .custom-header__logo-image {
   display: block;
@@ -77,10 +71,9 @@
   object-fit: contain;
 }
 
-
 /* =========================================
    RIGHT SIDE
-   ========================================= */
+========================================= */
 
 .custom-header__actions {
   display: flex;
@@ -92,10 +85,9 @@
   justify-self: end;
 }
 
-
 /* =========================================
    CONTACT
-   ========================================= */
+========================================= */
 
 .custom-header__contact {
   display: flex;
@@ -104,7 +96,6 @@
 
   line-height: 1.25;
 }
-
 
 .custom-header__phone,
 .custom-header__hours {
@@ -120,15 +111,13 @@
   pointer-events: auto;
 }
 
-
 .custom-header__hours {
   font-weight: 400;
 }
 
-
 /* =========================================
    ICONS
-   ========================================= */
+========================================= */
 
 .custom-header__action,
 .custom-header__cart {
@@ -143,7 +132,6 @@
   pointer-events: auto;
 }
 
-
 .custom-header__action svg,
 .custom-header__cart svg {
   display: block;
@@ -153,27 +141,23 @@
   stroke: currentColor;
 }
 
-
 .custom-header__wishlist {
   width: 34px;
   height: 34px;
 }
-
 
 .custom-header__account {
   width: 24px;
   height: 28px;
 }
 
-
 /* =========================================
    BASKET
-   ========================================= */
+========================================= */
 
 .custom-header__cart {
   gap: 10px;
 }
-
 
 .custom-header__cart-text {
   color: var(--header-text-color);
@@ -184,7 +168,6 @@
 
   white-space: nowrap;
 }
-
 
 .custom-header__cart-count {
   display: flex;
@@ -206,10 +189,9 @@
   line-height: 1;
 }
 
-
 /* =========================================
    NAVIGATION
-   ========================================= */
+========================================= */
 
 .custom-header__navigation {
   display: flex;
@@ -217,8 +199,9 @@
   justify-content: center;
 
   width: 100%;
-}
 
+  pointer-events: none;
+}
 
 .custom-header__menu {
   display: flex;
@@ -231,14 +214,14 @@
   padding: 12px 0 20px;
 
   list-style: none;
-}
 
+  pointer-events: auto;
+}
 
 .custom-header__menu-item {
   margin: 0;
   padding: 0;
 }
-
 
 .custom-header__menu-link {
   display: block;
@@ -257,15 +240,13 @@
   transition: opacity 0.2s ease;
 }
 
-
 .custom-header__menu-link:hover {
   opacity: 0.75;
 }
 
-
 /* =========================================
    HOVER
-   ========================================= */
+========================================= */
 
 .custom-header__phone:hover,
 .custom-header__action:hover,
@@ -273,98 +254,78 @@
   opacity: 0.8;
 }
 
-
 .custom-header__logo-link:hover {
   opacity: 0.9;
 }
 
-
 /* =========================================
    TABLET
-   ========================================= */
+========================================= */
 
 @media screen and (max-width: 1200px) {
-
   .custom-header__container {
     width: min(calc(100% - 40px), 1440px);
   }
-
 
   .custom-header__search {
     width: 300px;
   }
 
-
   .custom-header__actions {
     gap: 18px;
   }
-
 
   .custom-header__menu {
     gap: 32px;
   }
 
-
   .custom-header__menu-link {
     font-size: 16px;
   }
-
 }
-
 
 /* =========================================
    SMALLER TABLET
-   ========================================= */
+========================================= */
 
 @media screen and (max-width: 900px) {
-
   .custom-header__main {
     grid-template-columns: auto 1fr auto;
   }
-
 
   .custom-header__search {
     width: 250px;
   }
 
-
   .custom-header__contact {
     display: none;
   }
-
 
   .custom-header__actions {
     gap: 15px;
   }
 
-
   .custom-header__menu {
     gap: 20px;
   }
 
-
   .custom-header__menu-link {
     font-size: 14px;
   }
-
 }
-
 
 /* =========================================
    MOBILE
-   ========================================= */
+========================================= */
 
 @media screen and (max-width: 749px) {
-
   .custom-header {
     top: var(--header-top-offset);
   }
 
-
   .custom-header__container {
     width: calc(100% - 30px);
   }
-
 
   .custom-header__main {
     grid-template-columns: auto 1fr auto;
@@ -372,44 +333,35 @@
     min-height: 65px;
   }
 
-
   .custom-header__search {
     width: auto;
   }
-
 
   .custom-header__logo-image {
     width: min(var(--header-logo-width), 110px);
   }
 
-
   .custom-header__actions {
     gap: 12px;
   }
-
 
   .custom-header__wishlist {
     display: none;
   }
 
-
   .custom-header__account {
     width: 22px;
   }
-
 
   .custom-header__cart-text {
     display: none;
   }
 
-
   .custom-header__cart {
     gap: 0;
   }
 
-
   .custom-header__menu {
     display: none;
   }
-
 }

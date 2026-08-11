@@ -1,4 +1,5 @@
 {{ 'custom-header.css' | asset_url | stylesheet_tag }}
+{{ 'custom-search.css' | asset_url | stylesheet_tag }}
 
 <header
   class="custom-header"
@@ -20,17 +21,14 @@
         %}
       </div>
 
-
       <!-- Logo -->
       <div class="custom-header__logo">
         <a
           href="{{ routes.root_url }}"
           class="custom-header__logo-link"
-          aria-label="{{ shop.name }}"
+          aria-label="{{ shop.name | escape }}"
         >
-
           {% if section.settings.logo != blank %}
-
             {{
               section.settings.logo
               | image_url: width: 500
@@ -40,23 +38,18 @@
                 loading: 'eager',
                 alt: shop.name
             }}
-
           {% else %}
-
             <img
               src="https://www.daals.co.uk/cdn/shop/files/New26_daals-logo-master-web.svg?v=1772016725"
-              alt="{{ shop.name }}"
+              alt="{{ shop.name | escape }}"
               class="custom-header__logo-image"
               width="150"
               height="50"
               loading="eager"
             >
-
           {% endif %}
-
         </a>
       </div>
-
 
       <!-- Right side -->
       <div class="custom-header__actions">
@@ -83,7 +76,6 @@
           </div>
         {% endif %}
 
-
         <!-- Wishlist -->
         <a
           href="{{ section.settings.wishlist_url | default: routes.root_url }}"
@@ -107,7 +99,6 @@
             />
           </svg>
         </a>
-
 
         <!-- Account -->
         <a
@@ -141,14 +132,12 @@
           </svg>
         </a>
 
-
         <!-- Basket -->
         <a
           href="{{ routes.cart_url }}"
           class="custom-header__cart"
-          aria-label="{{ section.settings.cart_text }}"
+          aria-label="{{ section.settings.cart_text | escape }}"
         >
-
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -191,13 +180,11 @@
               {{ cart.item_count }}
             </span>
           {% endif %}
-
         </a>
 
       </div>
 
     </div>
-
 
     <!-- Navigation -->
     {% if section.settings.menu != blank %}
@@ -205,11 +192,9 @@
         class="custom-header__navigation"
         aria-label="Main navigation"
       >
-
         <ul class="custom-header__menu">
 
           {% for link in section.settings.menu.links %}
-
             <li class="custom-header__menu-item">
 
               <a
@@ -223,39 +208,31 @@
               </a>
 
             </li>
-
           {% endfor %}
 
         </ul>
-
       </nav>
     {% endif %}
 
   </div>
 </header>
 
-
 {% schema %}
 {
   "name": "Custom header",
-
   "enabled_on": {
     "groups": ["header"]
   },
-
   "settings": [
-
     {
       "type": "header",
       "content": "Logo"
     },
-
     {
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
     },
-
     {
       "type": "range",
       "id": "logo_width",
@@ -266,90 +243,70 @@
       "unit": "px",
       "default": 150
     },
-
-
     {
       "type": "header",
       "content": "Search"
     },
-
     {
       "type": "text",
       "id": "search_placeholder",
       "label": "Search placeholder",
       "default": "What are you looking for?"
     },
-
-
     {
       "type": "header",
       "content": "Contact"
     },
-
     {
       "type": "text",
       "id": "phone_number",
       "label": "Phone number",
       "default": "02477 180 023"
     },
-
     {
       "type": "text",
       "id": "opening_hours",
       "label": "Opening hours",
       "default": "8:30am - 5.30pm"
     },
-
-
     {
       "type": "header",
       "content": "Wishlist"
     },
-
     {
       "type": "url",
       "id": "wishlist_url",
       "label": "Wishlist link"
     },
-
-
     {
       "type": "header",
       "content": "Basket"
     },
-
     {
       "type": "text",
       "id": "cart_text",
       "label": "Basket text",
       "default": "Basket"
     },
-
-
     {
       "type": "header",
       "content": "Navigation"
     },
-
     {
       "type": "link_list",
       "id": "menu",
       "label": "Menu"
     },
-
-
     {
       "type": "header",
       "content": "Appearance"
     },
-
     {
       "type": "color",
       "id": "text_color",
       "label": "Header text and icon color",
       "default": "#FFFFFF"
     },
-
     {
       "type": "range",
       "id": "top_offset",
@@ -360,9 +317,7 @@
       "unit": "px",
       "default": 42
     }
-
   ],
-
   "presets": [
     {
       "name": "Custom header"

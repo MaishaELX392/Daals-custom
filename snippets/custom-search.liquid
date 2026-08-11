@@ -28,6 +28,7 @@
             stroke="currentColor"
             stroke-width="2"
           />
+
           <path
             d="M16.5 16.5L21 21"
             stroke="currentColor"
@@ -38,14 +39,12 @@
       </button>
 
       <input
+        class="custom-search__input"
         type="search"
         name="q"
         value="{{ search.terms | escape }}"
         placeholder="{{ search_placeholder | default: 'What are you looking for?' | escape }}"
-        class="custom-search__input"
         autocomplete="off"
-        autocapitalize="off"
-        spellcheck="false"
         aria-label="{{ search_placeholder | default: 'What are you looking for?' | escape }}"
       >
 

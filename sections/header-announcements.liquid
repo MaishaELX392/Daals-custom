@@ -1,181 +1,144 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
 
-
-{% if section.blocks.size > 1 %}
-  <script
-    src="{{ 'announcement-bar.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
-{% endif %}
-
-{% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
+{% render 'contrast-override',
+  background_color: section.settings.background_color,
+  section_id: section.id
+%}
 
 <div class="section-background color-custom-{{ section.id }}"></div>
+
 <aside
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
-  style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;{% if section.settings.divider_color != blank %} --color-border: {{ section.settings.divider_color }};{% endif %}"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --border-bottom-width: {{ section.settings.divider_width }}px;
+    --announcement-background: {{ section.settings.background_color }};
+    --announcement-text-color: {{ section.settings.text_color }};
+    {% if section.settings.divider_color != blank %}
+      --color-border: {{ section.settings.divider_color }};
+    {% endif %}
+  "
 >
-  {% liquid
-    assign autoplay = false
-    assign show_arrows = false
-    if section.blocks.size > 1
-      assign autoplay = true
-      assign show_arrows = true
-    endif
-  %}
+  <div class="announcement-bar__slides">
 
-  <announcement-bar-component
-    class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
-    {% endif %}
-  >
-    {% if show_arrows %}
-      {% render 'slideshow-arrows', icon_style: 'chevron' %}
-    {% endif %}
+    {% for block in section.blocks %}
 
-    <div class="announcement-bar__slides">
-      {% content_for 'blocks' %}
-    </div>
-  </announcement-bar-component>
+      <div
+        class="announcement-bar__item"
+        {{ block.shopify_attributes }}
+      >
+
+        {% if block.settings.link != blank %}
+          <a
+            href="{{ block.settings.link }}"
+            class="announcement-bar__link"
+          >
+        {% endif %}
+
+        <div class="announcement-bar__content">
+
+          {% if block.settings.icon != blank %}
+            <img
+              src="{{ block.settings.icon | image_url: width: 100 }}"
+              alt="{{ block.settings.icon.alt | escape }}"
+              class="announcement-bar__icon"
+              width="auto"
+              height="auto"
+            >
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <p class="announcement-bar__text">
+              {{ block.settings.text }}
+            </p>
+          {% endif %}
+
+        </div>
+
+        {% if block.settings.link != blank %}
+          </a>
+        {% endif %}
+
+      </div>
+
+    {% endfor %}
+
+  </div>
 </aside>
 
-{% stylesheet %}
-  .announcement-bar {
-    border-block-end: var(--border-bottom-width) solid var(--color-border);
-  }
-
-  .announcement-bar__slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-
-    @media screen and (max-width: 749px) {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .announcement-bar__slides {
-    display: grid;
-    grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
-    margin-inline: auto;
-  }
-
-  .announcement-bar__slides > * {
-    grid-area: stack;
-  }
-
-  .announcement-bar__slide {
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    content-visibility: visible;
-
-    &[aria-hidden='true'] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  .announcement-bar__slider slideshow-arrows {
-    padding: 0;
-    mix-blend-mode: normal;
-  }
-
-  .announcement-bar__slider slideshow-arrows .slideshow-control {
-    color: var(--color-foreground);
-  }
-
-  .announcement-bar__slider .slideshow-control {
-    display: flex;
-    padding: 0;
-    width: var(--button-size);
-    height: var(--button-size);
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    animation: none;
-
-    @media screen and (min-width: 750px) {
-      --slideshow-control-offset: calc((var(--button-size) - var(--icon-size-xs)) / 2);
-
-      .section--page-width &.slideshow-control--previous {
-        transform: translateX(var(--slideshow-control-offset));
-      }
-    }
-  }
-
-  .announcement-bar__slider .slideshow-control .svg-wrapper {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
-  }
-
-  .announcement-bar__slide {
-    place-content: center;
-  }
-
-  .announcement-bar__text:first-child {
-    margin: 0;
-  }
-
-  .announcement-bar__link {
-    position: absolute;
-    inset: 0;
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:names.announcement_bar",
-  "blocks": [
-    {
-      "type": "_announcement"
-    }
-  ],
+  "name": "Announcement bar",
+
   "enabled_on": {
     "groups": ["header"]
   },
-  "settings": [
+
+  "max_blocks": 3,
+
+  "blocks": [
     {
-      "type": "range",
-      "id": "speed",
-      "label": "t:settings.scroll_speed",
-      "min": 2,
-      "max": 10,
-      "default": 5,
-      "unit": "sec"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "select",
-      "id": "section_width",
-      "label": "t:settings.section_width",
-      "options": [
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
         {
-          "value": "page-width",
-          "label": "t:options.page"
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
         },
         {
-          "value": "full-width",
-          "label": "t:options.full"
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free delivery over £99"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
         }
-      ],
-      "default": "page-width"
+      ]
+    }
+  ],
+
+  "settings": [
+    {
+      "type": "header",
+      "content": "Announcement bar"
     },
     {
       "type": "color",
       "id": "background_color",
-      "label": "t:settings.background_color",
-      "placeholder": "t:settings.default"
+      "label": "Background color",
+      "default": "#774D43"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "full-width"
     },
     {
       "type": "range",
       "id": "divider_width",
-      "label": "t:settings.divider_thickness",
+      "label": "Divider thickness",
       "min": 0,
       "max": 5,
       "step": 0.5,
@@ -185,44 +148,59 @@
     {
       "type": "color",
       "id": "divider_color",
-      "label": "t:settings.divider_color",
-      "placeholder": "t:settings.default",
+      "label": "Divider color",
+      "default": "#774D43",
       "visible_if": "{{ section.settings.divider_width > 0 }}"
     },
     {
       "type": "header",
-      "content": "t:content.padding"
+      "content": "Spacing"
     },
     {
       "type": "range",
       "id": "padding-block-start",
-      "label": "t:settings.top",
+      "label": "Top",
       "min": 0,
-      "max": 100,
+      "max": 50,
       "step": 1,
       "unit": "px",
-      "default": 15
+      "default": 10
     },
     {
       "type": "range",
       "id": "padding-block-end",
-      "label": "t:settings.bottom",
+      "label": "Bottom",
       "min": 0,
-      "max": 100,
+      "max": 50,
       "step": 1,
       "unit": "px",
-      "default": 15
+      "default": 10
     }
   ],
+
   "presets": [
     {
-      "name": "t:names.announcement_bar",
-      "blocks": {
-        "announcement_1": {
-          "type": "_announcement"
+      "name": "Announcement bar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free delivery over £99"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Over 55,000 5-star reviews"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Exclusive daals designs"
+          }
         }
-      },
-      "block_order": ["announcement_1"]
+      ]
     }
   ]
 }

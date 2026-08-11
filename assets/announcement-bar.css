@@ -1,0 +1,140 @@
+.announcement-bar {
+  width: 100%;
+  background: var(--announcement-background);
+  color: var(--announcement-text-color);
+  border-block-end: var(--border-bottom-width) solid var(--color-border);
+}
+
+
+/* Announcement container */
+
+.announcement-bar__slides {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+/* Individual announcement */
+
+.announcement-bar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* Announcement link */
+
+.announcement-bar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* Announcement content */
+
+.announcement-bar__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+
+/* Custom icon */
+
+.announcement-bar__icon {
+  display: block;
+
+  width: auto;
+  height: 22px;
+  max-width: 70px;
+
+  margin-right: 9px;
+
+  flex: 0 0 auto;
+
+  object-fit: contain;
+}
+
+
+/* Announcement text */
+
+.announcement-bar__text {
+  margin: 0;
+
+  color: var(--announcement-text-color);
+
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/* Tablet */
+
+@media screen and (min-width: 750px) and (max-width: 1000px) {
+
+  .announcement-bar__slides {
+    padding-inline: 20px;
+  }
+
+  .announcement-bar__text {
+    font-size: 14px;
+  }
+
+  .announcement-bar__icon {
+    height: 20px;
+    max-width: 60px;
+    margin-right: 7px;
+  }
+}
+
+
+/* Mobile */
+
+@media screen and (max-width: 749px) {
+
+  .announcement-bar__slides {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+
+    padding: 10px 20px;
+  }
+
+  .announcement-bar__item {
+    min-height: 24px;
+  }
+
+  .announcement-bar__text {
+    font-size: 13px;
+    white-space: normal;
+  }
+
+  .announcement-bar__icon {
+    height: 18px;
+    max-width: 55px;
+    margin-right: 7px;
+  }
+}

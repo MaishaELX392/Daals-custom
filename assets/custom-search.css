@@ -20,9 +20,7 @@
 
   width: 100%;
   margin: 0;
-  padding: 0;
-
-  background: transparent;
+  /* background: transparent; */
   border: 0;
 }
 
@@ -47,7 +45,7 @@
   border: 0;
   border-radius: 22px;
 
-  background: rgba(40, 48, 42, 0.72);
+  background: transparent;
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -156,9 +154,7 @@
   -webkit-appearance: none;
 }
 
-/* =========================================================
-   SEARCH ICON
-========================================================= */
+
 
 .custom-search__icon {
   display: block;
@@ -173,9 +169,7 @@
   stroke: currentColor;
 }
 
-/* =========================================================
-   FOCUS
-========================================================= */
+
 
 .custom-search__input:focus {
   border: 0 !important;

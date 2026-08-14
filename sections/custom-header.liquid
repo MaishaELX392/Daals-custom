@@ -1,5 +1,6 @@
 {{ 'custom-header.css' | asset_url | stylesheet_tag }}
 {{ 'custom-search.css' | asset_url | stylesheet_tag }}
+{{ 'header-megamenu.css' | asset_url | stylesheet_tag }}
 
 <header
   class="custom-header"
@@ -11,17 +12,14 @@
 >
   <div class="custom-header__container">
 
-    <!-- Main header row -->
     <div class="custom-header__main">
 
-      <!-- Search -->
       <div class="custom-header__search">
         {% render 'custom-search',
           search_placeholder: section.settings.search_placeholder
         %}
       </div>
 
-      <!-- Logo -->
       <div class="custom-header__logo">
         <a
           href="{{ routes.root_url }}"
@@ -51,10 +49,8 @@
         </a>
       </div>
 
-      <!-- Right side -->
       <div class="custom-header__actions">
 
-        <!-- Contact -->
         {% if section.settings.phone_number != blank or section.settings.opening_hours != blank %}
           <div class="custom-header__contact">
 
@@ -76,7 +72,6 @@
           </div>
         {% endif %}
 
-        <!-- Wishlist -->
         <a
           href="{{ section.settings.wishlist_url | default: routes.root_url }}"
           class="custom-header__action custom-header__wishlist"
@@ -91,7 +86,7 @@
             aria-hidden="true"
           >
             <path
-              d="M25.4578 11.0913C24.9691 10.5868 24.3889 10.1866 23.7503 9.91358C23.1117 9.64054 22.4272 9.5 21.7359 9.5C21.0446 9.5 20.3601 9.64054 19.7215 9.91358C19.0829 10.1866 18.5026 10.5868 18.0139 11.0913L16.9997 12.1379L15.9855 11.0913C14.9984 10.0728 13.6596 9.50053 12.2636 9.50053C10.8676 9.50053 9.52879 10.0728 8.54168 11.0913C7.55456 12.1099 7 13.4914 7 14.9319C7 16.3723 7.55456 17.7538 8.54168 18.7724L9.55588 19.8189L16.9997 27.5L24.4436 19.8189L25.4578 18.7724C25.9467 18.2681 26.3346 17.6694 26.5992 17.0105C26.8638 16.3515 27 15.6452 27 14.9319C27 14.2186 26.8638 13.5123 26.5992 12.8533C26.3346 12.1943 25.9467 11.5956 25.4578 11.0913Z"
+              d="M25.4578 11.0913C24.9691 10.5868 24.3889 10.1866 23.7503 9.91358C23.1117 9.64054 22.4272 9.5 21.7359 9.5C21.0446 9.5 20.3601 9.64054 19.7215 9.91358C19.0829 10.1866 18.5026 10.5868 18.0139 11.0913L16.9997 12.1379L15.9855 11.0913C14.9984 10.0728 13.6596 9.50053 12.2636 9.50053C10.8676 9.50053 9.52879 10.0728 8.54168 11.0913C7.55456 12.1099 7 13.4914 7 14.9319C7 16.3723 7.55456 17.7538 8.54168 18.7724L9.55588 19.8189L16.9997 27.5L24.4436 19.8189L25.4578 18.7724C25.9467 18.2681 26.3346 17.6694 26.5992 17.0105C26.8638 16.3515 27 15.6452 27 14.9319C27 14.2186 26.8638 13.5123 25.4578 11.0913Z"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
@@ -100,7 +95,6 @@
           </svg>
         </a>
 
-        <!-- Account -->
         <a
           href="{{ routes.account_url }}"
           class="custom-header__action custom-header__account"
@@ -115,13 +109,12 @@
             aria-hidden="true"
           >
             <path
-              d="M17.5 20.0625V18C17.5 16.906 17.0654 15.8568 16.2918 15.0832C15.5182 14.3096 14.469 13.875 13.375 13.875H5.125C4.03098 13.875 2.98177 14.3096 2.20818 15.0832C1.4346 15.8568 1 16.906 1 18V20.0625"
+              d="M17.5 20.0625V18C17.5 16.906 17.0654 15.8568 16.2918 15.0832C15.5182 14.3096 14.469 13.875 13.375 13.875H5.125C4.03098 13.875 2.98177 14.3096 2.20818 15.0832 1.4346 15.8568 1 16.906 1 18V20.0625"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-
             <path
               d="M9.25 9.75C11.5282 9.75 13.375 7.90317 13.375 5.625C13.375 3.34683 11.5282 1.5 9.25 1.5C6.97183 1.5 5.125 3.34683 5.125 5.625C5.125 7.90317 6.97183 9.75 9.25 9.75Z"
               stroke="currentColor"
@@ -132,7 +125,6 @@
           </svg>
         </a>
 
-        <!-- Basket -->
         <a
           href="{{ routes.cart_url }}"
           class="custom-header__cart"
@@ -147,13 +139,12 @@
             aria-hidden="true"
           >
             <path
-              d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V6L18 2H6Z"
+              d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142 21 19V6L18 2H6Z"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-
             <path
               d="M3 6H21"
               stroke="currentColor"
@@ -161,9 +152,8 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-
             <path
-              d="M16 10C16 11.0609 15.5783 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5783 9.17157 12.8284C8.42172 12.0783 8 11.0609 8 10"
+              d="M16 10C16 11.0609 15.5783 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5783 9.17157 12.8284C8.42172 12.0783 8 10 8 10"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
@@ -186,33 +176,19 @@
 
     </div>
 
-    <!-- Navigation -->
-    {% if section.settings.menu != blank %}
-      <nav
-        class="custom-header__navigation"
-        aria-label="Main navigation"
-      >
-        <ul class="custom-header__menu">
-
-          {% for link in section.settings.menu.links %}
-            <li class="custom-header__menu-item">
-
-              <a
-                href="{{ link.url }}"
-                class="custom-header__menu-link"
-                {% if link.current %}
-                  aria-current="page"
-                {% endif %}
-              >
-                {{ link.title }}
-              </a>
-
-            </li>
-          {% endfor %}
-
-        </ul>
-      </nav>
-    {% endif %}
+    {% render 'header-megamenu',
+      menu: section.settings.menu,
+      text_color: section.settings.megamenu_text_color,
+      font_size: section.settings.megamenu_font_size,
+      font_weight: section.settings.megamenu_font_weight,
+      menu_gap: section.settings.megamenu_gap,
+      top_padding: section.settings.megamenu_top_padding,
+      bottom_padding: section.settings.megamenu_bottom_padding,
+      dropdown_background: section.settings.megamenu_dropdown_background,
+      dropdown_text_color: section.settings.megamenu_dropdown_text_color,
+      dropdown_padding_top: section.settings.megamenu_dropdown_padding_top,
+      dropdown_padding_bottom: section.settings.megamenu_dropdown_columns
+    %}
 
   </div>
 </header>
@@ -296,6 +272,121 @@
       "type": "link_list",
       "id": "menu",
       "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu"
+    },
+    {
+      "type": "color",
+      "id": "megamenu_text_color",
+      "label": "Menu text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "megamenu_font_size",
+      "label": "Menu font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "megamenu_font_weight",
+      "label": "Menu font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "megamenu_gap",
+      "label": "Menu item spacing",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 57
+    },
+    {
+      "type": "range",
+      "id": "megamenu_top_padding",
+      "label": "Menu top spacing",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "megamenu_bottom_padding",
+      "label": "Menu bottom spacing",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "megamenu_dropdown_background",
+      "label": "Dropdown background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "megamenu_dropdown_text_color",
+      "label": "Dropdown text color",
+      "default": "#252427"
+    },
+    {
+      "type": "range",
+      "id": "megamenu_dropdown_padding_top",
+      "label": "Dropdown top spacing",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "megamenu_dropdown_padding_bottom",
+      "label": "Dropdown bottom spacing",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "megamenu_dropdown_columns",
+      "label": "Dropdown columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
     },
     {
       "type": "header",

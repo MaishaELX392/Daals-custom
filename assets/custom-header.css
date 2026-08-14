@@ -2,7 +2,7 @@
   position: absolute;
   top: var(--header-top-offset);
   left: 0;
-  z-index: 20;
+  z-index: 50;
 
   width: 100%;
 
@@ -12,13 +12,11 @@
 }
 
 .custom-header__container {
+  position: relative;
+
   width: min(calc(100% - 80px), 1440px);
   margin: 0 auto;
 }
-
-/* =========================================
-   MAIN HEADER
-========================================= */
 
 .custom-header__main {
   display: grid;
@@ -28,10 +26,6 @@
   min-height: 88px;
 }
 
-/* =========================================
-   SEARCH
-========================================= */
-
 .custom-header__search {
   display: flex;
   align-items: center;
@@ -40,10 +34,6 @@
 
   width: 398px;
 }
-
-/* =========================================
-   LOGO
-========================================= */
 
 .custom-header__logo {
   display: flex;
@@ -71,10 +61,6 @@
   object-fit: contain;
 }
 
-/* =========================================
-   RIGHT SIDE
-========================================= */
-
 .custom-header__actions {
   display: flex;
   align-items: center;
@@ -84,10 +70,6 @@
 
   justify-self: end;
 }
-
-/* =========================================
-   CONTACT
-========================================= */
 
 .custom-header__contact {
   display: flex;
@@ -114,10 +96,6 @@
 .custom-header__hours {
   font-weight: 400;
 }
-
-/* =========================================
-   ICONS
-========================================= */
 
 .custom-header__action,
 .custom-header__cart {
@@ -150,10 +128,6 @@
   width: 24px;
   height: 28px;
 }
-
-/* =========================================
-   BASKET
-========================================= */
 
 .custom-header__cart {
   gap: 10px;
@@ -189,65 +163,6 @@
   line-height: 1;
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
-
-.custom-header__navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-
-  pointer-events: none;
-}
-
-.custom-header__menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 57px;
-
-  margin: 0;
-  padding: 12px 0 20px;
-
-  list-style: none;
-
-  pointer-events: auto;
-}
-
-.custom-header__menu-item {
-  margin: 0;
-  padding: 0;
-}
-
-.custom-header__menu-link {
-  display: block;
-
-  color: var(--header-text-color);
-
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.2;
-
-  text-decoration: none;
-  white-space: nowrap;
-
-  pointer-events: auto;
-
-  transition: opacity 0.2s ease;
-}
-
-.custom-header__menu-link:hover {
-  opacity: 0.75;
-}
-
-/* =========================================
-   HOVER
-========================================= */
-
 .custom-header__phone:hover,
 .custom-header__action:hover,
 .custom-header__cart:hover {
@@ -257,10 +172,6 @@
 .custom-header__logo-link:hover {
   opacity: 0.9;
 }
-
-/* =========================================
-   TABLET
-========================================= */
 
 @media screen and (max-width: 1200px) {
   .custom-header__container {
@@ -274,19 +185,7 @@
   .custom-header__actions {
     gap: 18px;
   }
-
-  .custom-header__menu {
-    gap: 32px;
-  }
-
-  .custom-header__menu-link {
-    font-size: 16px;
-  }
 }
-
-/* =========================================
-   SMALLER TABLET
-========================================= */
 
 @media screen and (max-width: 900px) {
   .custom-header__main {
@@ -304,19 +203,7 @@
   .custom-header__actions {
     gap: 15px;
   }
-
-  .custom-header__menu {
-    gap: 20px;
-  }
-
-  .custom-header__menu-link {
-    font-size: 14px;
-  }
 }
-
-/* =========================================
-   MOBILE
-========================================= */
 
 @media screen and (max-width: 749px) {
   .custom-header {
@@ -359,9 +246,5 @@
 
   .custom-header__cart {
     gap: 0;
-  }
-
-  .custom-header__menu {
-    display: none;
   }
 }

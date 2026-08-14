@@ -2,6 +2,12 @@
 {{ 'custom-search.css' | asset_url | stylesheet_tag }}
 {{ 'header-megamenu.css' | asset_url | stylesheet_tag }}
 
+{% assign header_menu = section.settings.menu %}
+
+{% if header_menu == blank %}
+  {% assign header_menu = linklists.main-menu %}
+{% endif %}
+
 <header
   class="custom-header"
   style="
@@ -109,7 +115,7 @@
             aria-hidden="true"
           >
             <path
-              d="M17.5 20.0625V18C17.5 16.906 17.0654 15.8568 16.2918 15.0832C15.5182 14.3096 14.469 13.875 13.375 13.875H5.125C4.03098 13.875 2.98177 14.3096 2.20818 15.0832 1.4346 15.8568 1 16.906 1 18V20.0625"
+              d="M17.5 20.0625V18C17.5 16.906 17.0654 15.8568 16.2918 15.0832C15.5182 14.3096 14.469 13.875 13.375 13.875H5.125C4.03098 13.875 2.98177 14.3096 2.20818 15.0832C1.4346 15.8568 1 16.906 1 18V20.0625"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
@@ -130,46 +136,42 @@
           class="custom-header__cart"
           aria-label="{{ section.settings.cart_text | escape }}"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142 21 19V6L18 2H6Z"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M3 6H21"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M16 10C16 11.0609 15.5783 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5783 9.17157 12.8284C8.42172 12.0783 8 10 8 10"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <span class="custom-header__cart-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 2L3 6V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V6L18 2H6Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M3 6H21"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16 10C16 11.0609 15.5784 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92157 13.5786 9.17157 12.8284C8.42172 12.0783 8 11.0609 8 10"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
 
           <span class="custom-header__cart-text">
             {{ section.settings.cart_text }}
           </span>
-
-          {% if cart.item_count > 0 %}
-            <span class="custom-header__cart-count">
-              {{ cart.item_count }}
-            </span>
-          {% endif %}
         </a>
 
       </div>
@@ -177,17 +179,14 @@
     </div>
 
     {% render 'header-megamenu',
-      menu: section.settings.menu,
-      text_color: section.settings.megamenu_text_color,
-      font_size: section.settings.megamenu_font_size,
-      font_weight: section.settings.megamenu_font_weight,
-      menu_gap: section.settings.megamenu_gap,
-      top_padding: section.settings.megamenu_top_padding,
-      bottom_padding: section.settings.megamenu_bottom_padding,
-      dropdown_background: section.settings.megamenu_dropdown_background,
-      dropdown_text_color: section.settings.megamenu_dropdown_text_color,
-      dropdown_padding_top: section.settings.megamenu_dropdown_padding_top,
-      dropdown_padding_bottom: section.settings.megamenu_dropdown_columns
+      menu: header_menu,
+      text_color: section.settings.text_color,
+      menu_gap: section.settings.menu_gap,
+      menu_font_size: section.settings.menu_font_size,
+      menu_font_weight: section.settings.menu_font_weight,
+      menu_padding_top: section.settings.menu_padding_top,
+      menu_padding_bottom: section.settings.menu_padding_bottom,
+      dropdown_width: section.settings.dropdown_width
     %}
 
   </div>
@@ -271,21 +270,22 @@
     {
       "type": "link_list",
       "id": "menu",
-      "label": "Menu"
-    },
-    {
-      "type": "header",
-      "content": "Mega menu"
-    },
-    {
-      "type": "color",
-      "id": "megamenu_text_color",
-      "label": "Menu text color",
-      "default": "#FFFFFF"
+      "label": "Menu",
+      "default": "main-menu"
     },
     {
       "type": "range",
-      "id": "megamenu_font_size",
+      "id": "menu_gap",
+      "label": "Menu item spacing",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 57
+    },
+    {
+      "type": "range",
+      "id": "menu_font_size",
       "label": "Menu font size",
       "min": 12,
       "max": 24,
@@ -295,7 +295,7 @@
     },
     {
       "type": "select",
-      "id": "megamenu_font_weight",
+      "id": "menu_font_weight",
       "label": "Menu font weight",
       "options": [
         {
@@ -319,74 +319,33 @@
     },
     {
       "type": "range",
-      "id": "megamenu_gap",
-      "label": "Menu item spacing",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 57
-    },
-    {
-      "type": "range",
-      "id": "megamenu_top_padding",
+      "id": "menu_padding_top",
       "label": "Menu top spacing",
       "min": 0,
-      "max": 50,
+      "max": 40,
       "step": 1,
       "unit": "px",
       "default": 12
     },
     {
       "type": "range",
-      "id": "megamenu_bottom_padding",
+      "id": "menu_padding_bottom",
       "label": "Menu bottom spacing",
       "min": 0,
-      "max": 50,
+      "max": 40,
       "step": 1,
       "unit": "px",
       "default": 20
     },
     {
-      "type": "color",
-      "id": "megamenu_dropdown_background",
-      "label": "Dropdown background",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "megamenu_dropdown_text_color",
-      "label": "Dropdown text color",
-      "default": "#252427"
-    },
-    {
       "type": "range",
-      "id": "megamenu_dropdown_padding_top",
-      "label": "Dropdown top spacing",
-      "min": 10,
-      "max": 80,
-      "step": 1,
+      "id": "dropdown_width",
+      "label": "Dropdown width",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
       "unit": "px",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "megamenu_dropdown_padding_bottom",
-      "label": "Dropdown bottom spacing",
-      "min": 10,
-      "max": 80,
-      "step": 1,
-      "unit": "px",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "megamenu_dropdown_columns",
-      "label": "Dropdown columns",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 4
+      "default": 500
     },
     {
       "type": "header",
@@ -411,7 +370,23 @@
   ],
   "presets": [
     {
-      "name": "Custom header"
+      "name": "Custom header",
+      "settings": {
+        "logo_width": 150,
+        "search_placeholder": "What are you looking for?",
+        "phone_number": "02477 180 023",
+        "opening_hours": "8:30am - 5.30pm",
+        "cart_text": "Basket",
+        "menu": "main-menu",
+        "menu_gap": 57,
+        "menu_font_size": 18,
+        "menu_font_weight": "400",
+        "menu_padding_top": 12,
+        "menu_padding_bottom": 20,
+        "dropdown_width": 500,
+        "text_color": "#FFFFFF",
+        "top_offset": 42
+      }
     }
   ]
 }

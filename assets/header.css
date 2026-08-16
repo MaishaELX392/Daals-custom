@@ -616,8 +616,8 @@ header-menu,
 }
 
 .header__columns {
-  --padding-block-start: var(--header-padding);
-  --padding-block-end: var(--header-padding);
+  /* --padding-block-start: var(--header-padding);
+  --padding-block-end: var(--header-padding); */
 }
 
 .header:not(.header--compact)

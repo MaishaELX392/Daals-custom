@@ -138,6 +138,7 @@
     },
     "custom_header_VHAzXJ": {
       "type": "custom-header",
+      "disabled": true,
       "name": "Custom header",
       "settings": {
         "logo_width": 150,
@@ -147,7 +148,13 @@
         "wishlist_url": "",
         "cart_text": "Basket",
         "menu": "",
-        "text_color": "#FFFFFF",
+        "menu_gap": 57,
+        "menu_font_size": 18,
+        "menu_font_weight": "400",
+        "menu_padding_top": 12,
+        "menu_padding_bottom": 20,
+        "dropdown_width": 500,
+        "text_color": "#ffffff",
         "top_offset": 42
       }
     }

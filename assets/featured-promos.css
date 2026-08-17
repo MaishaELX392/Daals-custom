@@ -1,0 +1,152 @@
+.featured-promos-wrapper {
+  width: 100%;
+}
+
+.featured-promos {
+  width: 100%;
+  padding-block-start: 32px;
+  padding-block-end: 40px;
+}
+
+.featured-promos__container {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.featured-promos__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.featured-promos__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: #704b42;
+}
+
+.featured-promos__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.78 / 1;
+  overflow: hidden;
+}
+
+.featured-promos__image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.featured-promos__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.featured-promos__image-link:hover .featured-promos__image {
+  transform: scale(1.02);
+}
+
+.featured-promos__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px 18px;
+  text-align: center;
+  background: #704b42;
+  color: #ffffff;
+}
+
+.featured-promos__heading {
+  margin: 0;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.featured-promos__description {
+  max-width: 100%;
+  margin-top: 4px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.featured-promos__description p {
+  margin: 0;
+}
+
+.featured-promos__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 0 0 3px;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.featured-promos__button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 749px) {
+  .featured-promos {
+    padding-block-start: 24px;
+    padding-block-end: 32px;
+  }
+
+  .featured-promos__container {
+    padding-inline: 16px;
+  }
+
+  .featured-promos__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .featured-promos__image-wrapper {
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .featured-promos__content {
+    padding: 12px 16px 18px;
+  }
+
+  .featured-promos__heading {
+    font-size: 20px;
+  }
+
+  .featured-promos__description {
+    font-size: 11px;
+  }
+
+  .featured-promos__button {
+    font-size: 11px;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .featured-promos__image {
+    transition: none;
+  }
+
+  .featured-promos__button {
+    transition: none;
+  }
+}

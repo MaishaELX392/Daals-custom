@@ -18,11 +18,15 @@
 .hero__container {
   position: relative;
   width: 100%;
-  min-height: inherit;
+  min-height: var(--hero-min-height);
+  height: var(--hero-min-height);
+  padding: 0 !important;
+  overflow: hidden;
 }
 
 .hero__media-grid {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(
@@ -30,7 +34,8 @@
     minmax(0, 1fr)
   );
   width: 100%;
-  min-height: inherit;
+  height: 100%;
+  min-height: 100%;
   overflow: hidden;
 }
 
@@ -38,7 +43,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: inherit;
+  min-height: 100%;
   overflow: hidden;
 }
 
@@ -66,9 +71,20 @@ picture.hero__media {
 .hero__content-wrapper {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
   min-height: 100%;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.hero__content-wrapper > * {
+  pointer-events: auto;
 }
 
 .hero__link {
@@ -116,6 +132,10 @@ picture.hero__media {
   min-height: auto;
 }
 
+.hero--no-blocks-auto-height .hero__container {
+  height: auto;
+}
+
 .hero--no-blocks-auto-height .hero__media {
   height: auto;
 }
@@ -125,7 +145,8 @@ picture.hero__media {
 }
 
 .hero[data-blur-shadow="true"] .hero__media-grid {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
 }
 
@@ -156,6 +177,11 @@ picture.hero__media {
 }
 
 @media screen and (min-width: 750px) {
+  .hero__container {
+    min-height: var(--hero-min-height);
+    height: var(--hero-min-height);
+  }
+
   .hero__media-grid {
     grid-template-columns: repeat(
       var(--hero-media-count),
@@ -178,9 +204,21 @@ picture.hero__media {
   .hero__blurred-image--mobile {
     display: none;
   }
+
+  .hero__content-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 749px) {
+  .hero__container {
+    min-height: var(--hero-min-height);
+    height: var(--hero-min-height);
+  }
+
   .hero__media-grid {
     grid-template-columns: repeat(
       var(--hero-media-count-mobile),
@@ -211,6 +249,8 @@ picture.hero__media {
   .hero__content-wrapper {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 

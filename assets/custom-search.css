@@ -1,6 +1,4 @@
-/* =========================================================
-   CUSTOM SEARCH
-========================================================= */
+
 
 .custom-search {
   display: block;
@@ -9,11 +7,12 @@
   max-width: 398px;
 
   pointer-events: auto;
+background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+
 }
 
-/* =========================================================
-   FORM
-========================================================= */
+
 
 .custom-search__form {
   display: block;
@@ -112,10 +111,6 @@
   appearance: none;
 }
 
-/* =========================================================
-   SEARCH BUTTON
-========================================================= */
-
 .custom-search__button {
   position: absolute;
   top: 50%;
@@ -154,8 +149,6 @@
   -webkit-appearance: none;
 }
 
-
-
 .custom-search__icon {
   display: block;
 
@@ -169,8 +162,6 @@
   stroke: currentColor;
 }
 
-
-
 .custom-search__input:focus {
   border: 0 !important;
   outline: none !important;
@@ -182,15 +173,11 @@
   outline-offset: -2px;
 }
 
-
-
 .custom-search__button:hover {
   background: transparent !important;
   color: #ffffff !important;
   opacity: 0.85;
 }
-
-
 
 .custom-header .custom-search,
 .custom-header .custom-search__form,

@@ -138,7 +138,6 @@
     },
     "custom_header_VHAzXJ": {
       "type": "custom-header",
-      "disabled": true,
       "name": "Custom header",
       "settings": {
         "logo_width": 150,

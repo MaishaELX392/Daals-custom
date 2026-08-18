@@ -24,7 +24,9 @@
       }
 
       const styles = window.getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      const gap = parseFloat(
+        styles.columnGap || styles.gap || '0'
+      );
 
       return item.getBoundingClientRect().width + gap;
     }
@@ -34,37 +36,61 @@
         return;
       }
 
-      const maxScroll = track.scrollWidth - track.clientWidth;
+      const maxScroll = Math.max(
+        0,
+        track.scrollWidth - track.clientWidth
+      );
 
-      previousButton.disabled = track.scrollLeft <= 2;
-      nextButton.disabled = track.scrollLeft >= maxScroll - 2;
+      const canScroll = maxScroll > 2;
+
+      previousButton.disabled =
+        !canScroll || track.scrollLeft <= 2;
+
+      nextButton.disabled =
+        !canScroll ||
+        track.scrollLeft >= maxScroll - 2;
     }
 
     if (previousButton) {
-      previousButton.addEventListener('click', function () {
-        track.scrollBy({
-          left: -getScrollAmount(),
-          behavior: 'smooth'
-        });
-      });
+      previousButton.addEventListener(
+        'click',
+        function () {
+          track.scrollBy({
+            left: -getScrollAmount(),
+            behavior: 'smooth'
+          });
+        }
+      );
     }
 
     if (nextButton) {
-      nextButton.addEventListener('click', function () {
-        track.scrollBy({
-          left: getScrollAmount(),
-          behavior: 'smooth'
-        });
-      });
+      nextButton.addEventListener(
+        'click',
+        function () {
+          track.scrollBy({
+            left: getScrollAmount(),
+            behavior: 'smooth'
+          });
+        }
+      );
     }
 
-    track.addEventListener('scroll', updateButtons, {
-      passive: true
+    track.addEventListener(
+      'scroll',
+      updateButtons,
+      {
+        passive: true
+      }
+    );
+
+    window.addEventListener(
+      'resize',
+      updateButtons
+    );
+
+    requestAnimationFrame(function () {
+      updateButtons();
     });
-
-    window.addEventListener('resize', updateButtons);
-
-    updateButtons();
   }
 
   function initAll() {
@@ -81,7 +107,10 @@
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener(
+      'DOMContentLoaded',
+      initAll
+    );
   } else {
     initAll();
   }

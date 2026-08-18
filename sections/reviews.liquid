@@ -1,5 +1,5 @@
 {{ 'reviews.css' | asset_url | stylesheet_tag }}
-{{ 'custom-collection-slider.js' | asset_url | script_tag }}
+<script src="{{ 'custom-collection-slider.js' | asset_url }}" defer></script>
 
 <section
   class="reviews-section"
@@ -11,6 +11,7 @@
   <div class="reviews-section__content">
 
     <div class="reviews-section__header">
+
       {% if section.settings.heading != blank %}
         <h2 class="reviews-section__heading">
           {{ section.settings.heading }}
@@ -27,32 +28,39 @@
           {% endif %}
 
           <span class="reviews-section__trustpilot-brand">
-            <span class="reviews-section__trustpilot-star">★</span>
+            <span class="reviews-section__trustpilot-star">
+              ★
+            </span>
+
             Trustpilot
           </span>
 
         </div>
       {% endif %}
+
     </div>
 
-    <div class="reviews-slider">
+    {% assign review_blocks = section.blocks | where: 'type', 'review' %}
 
-      <button
-        type="button"
-        class="reviews-slider__arrow reviews-slider__arrow--prev"
-        data-slider-prev
-        aria-label="Previous review"
-      >
-        <span>‹</span>
-      </button>
+    {% if review_blocks.size > 0 %}
 
-      <div
-        class="reviews-slider__track"
-        data-slider-track
-      >
+      <div class="reviews-slider">
 
-        {% for block in section.blocks %}
-          {% if block.type == 'review' %}
+        <button
+          type="button"
+          class="reviews-slider__arrow reviews-slider__arrow--prev"
+          data-slider-prev
+          aria-label="Previous reviews"
+        >
+          <span>‹</span>
+        </button>
+
+        <div
+          class="reviews-slider__track"
+          data-slider-track
+        >
+
+          {% for block in review_blocks %}
 
             <article
               class="review-card"
@@ -61,7 +69,9 @@
             >
 
               <div class="review-card__image">
+
                 {% if block.settings.image != blank %}
+
                   {{
                     block.settings.image
                     | image_url: width: 500
@@ -70,9 +80,13 @@
                       widths: '200, 300, 400, 500',
                       sizes: '(max-width: 600px) 105px, 108px'
                   }}
+
                 {% else %}
+
                   {{ 'image' | placeholder_svg_tag: 'review-card__placeholder' }}
+
                 {% endif %}
+
               </div>
 
               <div class="review-card__content">
@@ -82,7 +96,9 @@
                   aria-label="5 out of 5 stars"
                 >
                   {% for i in (1..5) %}
-                    <span class="review-card__star">★</span>
+                    <span class="review-card__star">
+                      ★
+                    </span>
                   {% endfor %}
                 </div>
 
@@ -108,21 +124,22 @@
 
             </article>
 
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
+
+        </div>
+
+        <button
+          type="button"
+          class="reviews-slider__arrow reviews-slider__arrow--next"
+          data-slider-next
+          aria-label="Next reviews"
+        >
+          <span>›</span>
+        </button>
 
       </div>
 
-      <button
-        type="button"
-        class="reviews-slider__arrow reviews-slider__arrow--next"
-        data-slider-next
-        aria-label="Next review"
-      >
-        <span>›</span>
-      </button>
-
-    </div>
+    {% endif %}
 
   </div>
 
@@ -157,7 +174,7 @@
                   | image_tag:
                     loading: 'lazy',
                     widths: '120, 200, 300, 400'
-                  }}
+                }}
 
               {% elsif block.settings.logo_text != blank %}
 
@@ -238,7 +255,7 @@
           "type": "textarea",
           "id": "text",
           "label": "Review text",
-          "default": "The quality is amazing and the delivery was lovely and the service was brilliant. I would definitely recommend ordering from them."
+          "default": "The quality is amazing and the delivery was lovely. I would definitely recommend ordering from them."
         },
         {
           "type": "text",
@@ -275,6 +292,7 @@
           "type": "review",
           "settings": {
             "title": "Amazing quality!",
+            "text": "The quality is amazing and the delivery was lovely. I would definitely recommend ordering from them.",
             "name": "Depash"
           }
         },
@@ -282,6 +300,7 @@
           "type": "review",
           "settings": {
             "title": "Perfect blend of style and function!",
+            "text": "Beautiful product, excellent quality and very easy to order. I am really happy with my purchase.",
             "name": "Kenneth"
           }
         },
@@ -289,7 +308,32 @@
           "type": "review",
           "settings": {
             "title": "Friendly & responsive team!",
+            "text": "The team was very helpful and responsive. Everything arrived exactly as expected.",
             "name": "Sonia"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Beautiful product!",
+            "text": "I absolutely love the product. It looks even better in person and the quality is excellent.",
+            "name": "Sarah"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Excellent service!",
+            "text": "Great communication and fantastic service from start to finish. Highly recommended.",
+            "name": "Emma"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "title": "Would definitely buy again!",
+            "text": "A beautiful product and a really smooth shopping experience. I would happily order again.",
+            "name": "Jessica"
           }
         },
         {
@@ -326,12 +370,6 @@
           "type": "logo",
           "settings": {
             "logo_text": "theguardian"
-          }
-        },
-        {
-          "type": "logo",
-          "settings": {
-            "logo_text": "DECOR"
           }
         }
       ]

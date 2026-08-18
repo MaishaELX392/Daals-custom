@@ -337,11 +337,26 @@
         "content_padding_top": 10,
         "content_padding_bottom": 18
       }
+    },
+    "custom_collection_slider_X8EtUF": {
+      "type": "custom-collection-slider",
+      "name": "Custom collection slider",
+      "settings": {
+        "heading": "New arrivals",
+        "description": "",
+        "collection": "",
+        "view_all_text": "View all",
+        "products_to_show": 8,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quick_add": true
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
-    "featured_promos_JYnRfC"
+    "featured_promos_JYnRfC",
+    "custom_collection_slider_X8EtUF"
   ]
 }

@@ -21,11 +21,8 @@
         return track.clientWidth;
       }
 
-      const gap = parseFloat(
-        window.getComputedStyle(track).columnGap ||
-          window.getComputedStyle(track).gap ||
-          '0'
-      );
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
 
       return item.getBoundingClientRect().width + gap;
     }
@@ -35,14 +32,10 @@
         return;
       }
 
-      const maxScroll =
-        track.scrollWidth - track.clientWidth;
+      const maxScroll = track.scrollWidth - track.clientWidth;
 
-      previousButton.disabled =
-        track.scrollLeft <= 2;
-
-      nextButton.disabled =
-        track.scrollLeft >= maxScroll - 2;
+      previousButton.disabled = track.scrollLeft <= 2;
+      nextButton.disabled = track.scrollLeft >= maxScroll - 2;
     }
 
     if (previousButton) {
@@ -63,16 +56,11 @@
       });
     }
 
-    track.addEventListener(
-      'scroll',
-      updateButtons,
-      { passive: true }
-    );
+    track.addEventListener('scroll', updateButtons, {
+      passive: true
+    });
 
-    window.addEventListener(
-      'resize',
-      updateButtons
-    );
+    window.addEventListener('resize', updateButtons);
 
     updateButtons();
   }
@@ -89,24 +77,16 @@
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener(
-      'DOMContentLoaded',
-      initAll
-    );
+    document.addEventListener('DOMContentLoaded', initAll);
   } else {
     initAll();
   }
 
-  document.addEventListener(
-    'shopify:section:load',
-    function (event) {
-      const section = event.target.querySelector(
-        '.collection-slider'
-      );
+  document.addEventListener('shopify:section:load', function (event) {
+    const section = event.target.querySelector('.collection-slider');
 
-      if (section) {
-        initSlider(section);
-      }
+    if (section) {
+      initSlider(section);
     }
-  );
+  });
 })();

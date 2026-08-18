@@ -1,9 +1,6 @@
-{{ 'custom-product-card.css' | asset_url | stylesheet_tag }}
-
 {% liquid
   assign card_product = product
   assign product_image = card_product.featured_image
-
   assign second_image = blank
 
   if card_product.images.size > 1
@@ -33,7 +30,7 @@
             loading: 'lazy',
             widths: '320, 480, 640, 800',
             sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw',
-            alt: product_image.alt | default: card_product.title | escape
+            alt: product_image.alt | default: card_product.title
         }}
 
         {% if second_image != blank %}
@@ -45,7 +42,7 @@
               loading: 'lazy',
               widths: '320, 480, 640, 800',
               sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw',
-              alt: second_image.alt | default: card_product.title | escape
+              alt: second_image.alt | default: card_product.title
           }}
         {% endif %}
 
@@ -116,9 +113,7 @@
                 </svg>
               </span>
 
-              <span>
-                Add
-              </span>
+              <span>Add</span>
             </button>
 
           {% else %}
@@ -127,9 +122,7 @@
               href="{{ card_product.url }}"
               class="custom-product-card__quick-add-button"
             >
-              <span>
-                Choose options
-              </span>
+              <span>Choose options</span>
             </a>
 
           {% endif %}
@@ -163,9 +156,7 @@
           class="custom-product-card__rating"
           aria-label="{{ rating_value }} out of 5 stars"
         >
-          <span class="custom-product-card__stars">
-            ★★★★★
-          </span>
+          <span class="custom-product-card__stars">★★★★★</span>
 
           <span class="custom-product-card__rating-value">
             {{ rating_value }}

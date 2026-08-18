@@ -237,13 +237,3 @@
   }
 }
 
-@media (hover: none) {
-  .custom-product-card__image--secondary {
-    display: none;
-  }
-
-  .custom-product-card:hover
-  .custom-product-card__image--primary {
-    transform: none;
-  }
-}

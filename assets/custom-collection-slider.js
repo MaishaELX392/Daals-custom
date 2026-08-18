@@ -15,7 +15,9 @@
     section.dataset.sliderInitialized = 'true';
 
     function getScrollAmount() {
-      const item = track.querySelector('.collection-slider__item');
+      const item = track.querySelector(
+        '.custom-collection-slider__item'
+      );
 
       if (!item) {
         return track.clientWidth;
@@ -67,11 +69,11 @@
 
   function initAll() {
     document
-      .querySelectorAll('.collection-slider')
+      .querySelectorAll('.custom-collection-slider')
       .forEach(initSlider);
   }
 
-  window.CollectionSlider = {
+  window.CustomCollectionSlider = {
     init: initSlider,
     initAll: initAll
   };
@@ -82,11 +84,16 @@
     initAll();
   }
 
-  document.addEventListener('shopify:section:load', function (event) {
-    const section = event.target.querySelector('.collection-slider');
+  document.addEventListener(
+    'shopify:section:load',
+    function (event) {
+      const section = event.target.querySelector(
+        '.custom-collection-slider'
+      );
 
-    if (section) {
-      initSlider(section);
+      if (section) {
+        initSlider(section);
+      }
     }
-  });
+  );
 })();

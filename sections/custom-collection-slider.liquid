@@ -1,25 +1,25 @@
-{{ 'collection-slider.css' | asset_url | stylesheet_tag }}
+{{ 'custom-collection-slider.css' | asset_url | stylesheet_tag }}
 {{ 'custom-product-card.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'collection-slider.js' | asset_url }}" defer></script>
+<script src="{{ 'custom-collection-slider.js' | asset_url }}" defer></script>
 
 <section
-  id="CollectionSlider-{{ section.id }}"
-  class="collection-slider"
+  id="CustomCollectionSlider-{{ section.id }}"
+  class="custom-collection-slider"
 >
-  <div class="collection-slider__container">
+  <div class="custom-collection-slider__container">
 
-    <div class="collection-slider__header">
+    <div class="custom-collection-slider__header">
 
-      <div class="collection-slider__heading-wrapper">
+      <div class="custom-collection-slider__heading-wrapper">
 
         {% if section.settings.heading != blank %}
-          <h2 class="collection-slider__heading">
+          <h2 class="custom-collection-slider__heading">
             {{ section.settings.heading }}
           </h2>
         {% endif %}
 
         {% if section.settings.description != blank %}
-          <div class="collection-slider__description">
+          <div class="custom-collection-slider__description">
             {{ section.settings.description }}
           </div>
         {% endif %}
@@ -29,7 +29,7 @@
       {% if section.settings.collection != blank %}
         <a
           href="{{ section.settings.collection.url }}"
-          class="collection-slider__view-all"
+          class="custom-collection-slider__view-all"
         >
           {{ section.settings.view_all_text }}
         </a>
@@ -41,11 +41,11 @@
 
     {% if selected_collection != blank and selected_collection.products_count > 0 %}
 
-      <div class="collection-slider__wrapper">
+      <div class="custom-collection-slider__wrapper">
 
         <button
           type="button"
-          class="collection-slider__arrow collection-slider__arrow--prev"
+          class="custom-collection-slider__arrow custom-collection-slider__arrow--prev"
           aria-label="Previous products"
           data-slider-prev
         >
@@ -68,11 +68,11 @@
         </button>
 
         <div
-          class="collection-slider__track"
+          class="custom-collection-slider__track"
           data-slider-track
         >
           {% for product in selected_collection.products limit: section.settings.products_to_show %}
-            <div class="collection-slider__item">
+            <div class="custom-collection-slider__item">
               {% render 'custom-product-card',
                 product: product,
                 show_vendor: section.settings.show_vendor,
@@ -85,7 +85,7 @@
 
         <button
           type="button"
-          class="collection-slider__arrow collection-slider__arrow--next"
+          class="custom-collection-slider__arrow custom-collection-slider__arrow--next"
           aria-label="Next products"
           data-slider-next
         >
@@ -111,7 +111,7 @@
 
     {% else %}
 
-      <div class="collection-slider__empty">
+      <div class="custom-collection-slider__empty">
         <p>Select a collection to display products.</p>
       </div>
 
@@ -122,9 +122,9 @@
 
 {% schema %}
 {
-  "name": "Collection slider",
+  "name": "Custom collection slider",
   "tag": "section",
-  "class": "collection-slider-section",
+  "class": "custom-collection-slider-section",
   "settings": [
     {
       "type": "text",
@@ -178,7 +178,7 @@
   ],
   "presets": [
     {
-      "name": "Collection slider",
+      "name": "Custom collection slider",
       "category": "Products"
     }
   ]

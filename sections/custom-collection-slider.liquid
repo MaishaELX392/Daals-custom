@@ -26,20 +26,9 @@
 
       </div>
 
-      {% if section.settings.collection != blank %}
-        <a
-          href="{{ section.settings.collection.url }}"
-          class="custom-collection-slider__view-all"
-        >
-          {{ section.settings.view_all_text }}
-        </a>
-      {% endif %}
-
     </div>
 
-    {% assign selected_collection = section.settings.collection %}
-
-    {% if selected_collection != blank and selected_collection.products_count > 0 %}
+    {% if section.blocks.size > 0 %}
 
       <div class="custom-collection-slider__wrapper">
 
@@ -71,16 +60,29 @@
           class="custom-collection-slider__track"
           data-slider-track
         >
-          {% for product in selected_collection.products limit: section.settings.products_to_show %}
-            <div class="custom-collection-slider__item">
-              {% render 'custom-product-card',
-                product: product,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                show_quick_add: section.settings.show_quick_add
-              %}
-            </div>
+
+          {% for block in section.blocks %}
+
+            {% assign product = block.settings.product %}
+
+            {% if product != blank %}
+
+              <div
+                class="custom-collection-slider__item"
+                {{ block.shopify_attributes }}
+              >
+                {% render 'custom-product-card',
+                  product: product,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  show_quick_add: section.settings.show_quick_add
+                %}
+              </div>
+
+            {% endif %}
+
           {% endfor %}
+
         </div>
 
         <button
@@ -112,7 +114,7 @@
     {% else %}
 
       <div class="custom-collection-slider__empty">
-        <p>Select a collection to display products.</p>
+        <p>Add products to this slider.</p>
       </div>
 
     {% endif %}
@@ -130,32 +132,12 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "New arrivals"
+      "default": "Our Garden Collections"
     },
     {
       "type": "richtext",
       "id": "description",
       "label": "Description"
-    },
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection"
-    },
-    {
-      "type": "text",
-      "id": "view_all_text",
-      "label": "View all text",
-      "default": "View all"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "label": "Products to show",
-      "min": 4,
-      "max": 24,
-      "step": 1,
-      "default": 8
     },
     {
       "type": "checkbox",
@@ -173,13 +155,46 @@
       "type": "checkbox",
       "id": "show_quick_add",
       "label": "Show quick add",
-      "default": true
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "Custom collection slider",
-      "category": "Products"
+      "category": "Products",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
     }
   ]
 }

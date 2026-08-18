@@ -344,7 +344,7 @@
       "settings": {
         "heading": "New arrivals",
         "description": "",
-        "collection": "hydrogen",
+        "collection": "automated-collection",
         "view_all_text": "View all",
         "products_to_show": 16,
         "show_vendor": false,

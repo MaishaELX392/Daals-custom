@@ -344,9 +344,9 @@
       "settings": {
         "heading": "New arrivals",
         "description": "",
-        "collection": "",
+        "collection": "hydrogen",
         "view_all_text": "View all",
-        "products_to_show": 8,
+        "products_to_show": 16,
         "show_vendor": false,
         "show_rating": false,
         "show_quick_add": true

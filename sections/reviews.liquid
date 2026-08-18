@@ -2,8 +2,8 @@
 <script src="{{ 'custom-collection-slider.js' | asset_url }}" defer></script>
 
 <section
-  class="reviews-section"
-  data-slider-section
+  id="Reviews-{{ section.id }}"
+  class="reviews-section custom-collection-slider"
   style="
     --reviews-background-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');
   "
@@ -31,7 +31,6 @@
             <span class="reviews-section__trustpilot-star">
               ★
             </span>
-
             Trustpilot
           </span>
 
@@ -56,15 +55,14 @@
         </button>
 
         <div
-          class="reviews-slider__track"
+          class="reviews-slider__track custom-collection-slider__track"
           data-slider-track
         >
 
           {% for block in review_blocks %}
 
             <article
-              class="review-card"
-              data-slider-item
+              class="review-card custom-collection-slider__item"
               {{ block.shopify_attributes }}
             >
 
@@ -152,41 +150,71 @@
       <div class="reviews-press__inner">
 
         {% if section.settings.as_seen_in_text != blank %}
-          <div class="reviews-press__label">
-            {{ section.settings.as_seen_in_text }}
-          </div>
         {% endif %}
 
-        <div class="reviews-press__logos">
+        <div class="reviews-press__marquee">
 
-          {% for block in logo_blocks %}
+          <div class="reviews-press__logos">
 
-            <div
-              class="reviews-press__logo"
-              {{ block.shopify_attributes }}
-            >
+            {% for block in logo_blocks %}
 
-              {% if block.settings.logo != blank %}
+              <div
+                class="reviews-press__logo"
+                {{ block.shopify_attributes }}
+              >
 
-                {{
-                  block.settings.logo
-                  | image_url: width: 400
-                  | image_tag:
-                    loading: 'lazy',
-                    widths: '120, 200, 300, 400'
-                }}
+                {% if block.settings.logo != blank %}
 
-              {% elsif block.settings.logo_text != blank %}
+                  {{
+                    block.settings.logo
+                    | image_url: width: 400
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '120, 200, 300, 400'
+                  }}
 
-                <span>
-                  {{ block.settings.logo_text }}
-                </span>
+                {% elsif block.settings.logo_text != blank %}
 
-              {% endif %}
+                  <span>
+                    {{ block.settings.logo_text }}
+                  </span>
 
-            </div>
+                {% endif %}
 
-          {% endfor %}
+              </div>
+
+            {% endfor %}
+
+            {% for block in logo_blocks %}
+
+              <div
+                class="reviews-press__logo"
+                aria-hidden="true"
+              >
+
+                {% if block.settings.logo != blank %}
+
+                  {{
+                    block.settings.logo
+                    | image_url: width: 400
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '120, 200, 300, 400'
+                  }}
+
+                {% elsif block.settings.logo_text != blank %}
+
+                  <span>
+                    {{ block.settings.logo_text }}
+                  </span>
+
+                {% endif %}
+
+              </div>
+
+            {% endfor %}
+
+          </div>
 
         </div>
 

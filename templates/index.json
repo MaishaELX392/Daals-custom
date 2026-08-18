@@ -293,10 +293,55 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "featured_promos_JYnRfC": {
+      "type": "featured-promos",
+      "blocks": {
+        "promo_RiN3xc": {
+          "type": "promo",
+          "settings": {
+            "image": "shopify://shop_images/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg",
+            "heading": "New Outdoor Furniture",
+            "description": "<p>Browse our latest exclusive designs. Limited availability.</p>",
+            "button_label": "Shop now",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "promo_VKqxwN": {
+          "type": "promo",
+          "settings": {
+            "image": "shopify://shop_images/Main.jpg",
+            "heading": "New Bed Arrivals",
+            "description": "<p>Statement luxury, reimagined.</p>",
+            "button_label": "Shop now",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "promo_RiN3xc",
+        "promo_VKqxwN"
+      ],
+      "name": "Featured promos",
+      "settings": {
+        "max_width": 1000,
+        "gap": 12,
+        "padding_top": 32,
+        "padding_bottom": 40,
+        "card_background": "#704B42",
+        "heading_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "button_color": "#FFFFFF",
+        "content_padding_top": 10,
+        "content_padding_bottom": 18
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "featured_promos_JYnRfC"
   ]
 }

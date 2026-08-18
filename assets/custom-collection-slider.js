@@ -15,7 +15,9 @@
     section.dataset.sliderInitialized = 'true';
 
     function getScrollAmount() {
-      const item = track.querySelector('[data-slider-item]');
+      const item = track.querySelector(
+        '.custom-collection-slider__item, [data-slider-item]'
+      );
 
       if (!item) {
         return track.clientWidth;
@@ -67,11 +69,13 @@
 
   function initAll() {
     document
-      .querySelectorAll('[data-slider-section]')
+      .querySelectorAll(
+        '.custom-collection-slider, [data-slider-section]'
+      )
       .forEach(initSlider);
   }
 
-  window.CustomSlider = {
+  window.CustomCollectionSlider = {
     init: initSlider,
     initAll: initAll
   };
@@ -85,9 +89,13 @@
   document.addEventListener(
     'shopify:section:load',
     function (event) {
-      const section = event.target.querySelector(
-        '[data-slider-section]'
-      );
+      const section = event.target.matches(
+        '.custom-collection-slider, [data-slider-section]'
+      )
+        ? event.target
+        : event.target.querySelector(
+            '.custom-collection-slider, [data-slider-section]'
+          );
 
       if (section) {
         initSlider(section);

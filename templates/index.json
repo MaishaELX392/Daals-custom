@@ -338,7 +338,7 @@
         "content_padding_bottom": 18
       }
     },
-    "custom_collection_slider_X8EtUF": {
+    "custom_collection_slider_nhJEkW": {
       "type": "custom-collection-slider",
       "name": "Custom collection slider",
       "settings": {
@@ -346,7 +346,7 @@
         "description": "",
         "collection": "automated-collection",
         "view_all_text": "View all",
-        "products_to_show": 16,
+        "products_to_show": 23,
         "show_vendor": false,
         "show_rating": false,
         "show_quick_add": true
@@ -357,6 +357,6 @@
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "featured_promos_JYnRfC",
-    "custom_collection_slider_X8EtUF"
+    "custom_collection_slider_nhJEkW"
   ]
 }

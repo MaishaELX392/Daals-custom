@@ -438,63 +438,6 @@
         "show_quick_add": true
       }
     },
-    "custom_collection_slider_ppe64p": {
-      "type": "custom-collection-slider",
-      "blocks": {
-        "product_V7dLG7": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_FEdTnF": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_AGGRRA": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_AHrbxY": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_dnQKtP": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        },
-        "product_PM3j3x": {
-          "type": "product",
-          "settings": {
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_V7dLG7",
-        "product_FEdTnF",
-        "product_AGGRRA",
-        "product_AHrbxY",
-        "product_dnQKtP",
-        "product_PM3j3x"
-      ],
-      "name": "Custom collection slider",
-      "settings": {
-        "heading": "Our Garden Collections",
-        "description": "",
-        "show_vendor": false,
-        "show_rating": false,
-        "show_quick_add": false
-      }
-    },
     "reviews_dnkkzr": {
       "type": "reviews",
       "blocks": {
@@ -570,7 +513,6 @@
     "product_list_fa6P9H",
     "featured_promos_JYnRfC",
     "custom_collection_slider_wFTqGg",
-    "custom_collection_slider_ppe64p",
     "reviews_dnkkzr"
   ]
 }

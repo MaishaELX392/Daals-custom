@@ -1,0 +1,132 @@
+.benefits-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 32px 0 28px;
+}
+
+.benefits-section__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.benefits-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  justify-content: center;
+  gap: 80px;
+}
+
+.benefits-section__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.benefits-section__title {
+  margin: 0 0 14px;
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.benefits-section__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 70px;
+  height: 70px;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: #eee8e2;
+  color: #252427;
+}
+
+.benefits-section__icon-svg {
+  display: block;
+  width: 42px;
+  height: 42px;
+}
+
+.benefits-section__icon-image {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.benefits-section__description {
+  max-width: 245px;
+
+  color: #000000;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.15;
+
+  text-align: center;
+}
+
+.benefits-section__description p {
+  margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .benefits-section {
+    padding: 28px 0;
+  }
+
+  .benefits-section__container {
+    padding: 0 24px;
+  }
+
+  .benefits-section__grid {
+    gap: 35px;
+  }
+
+  .benefits-section__title {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .benefits-section {
+    padding: 28px 0;
+  }
+
+  .benefits-section__container {
+    padding: 0 20px;
+  }
+
+  .benefits-section__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .benefits-section__title {
+    margin-bottom: 12px;
+    font-size: 17px;
+  }
+
+  .benefits-section__icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 13px;
+  }
+
+  .benefits-section__description {
+    max-width: 280px;
+    font-size: 11px;
+  }
+}

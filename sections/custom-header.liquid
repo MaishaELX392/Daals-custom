@@ -2,6 +2,8 @@
 {{ 'custom-search.css' | asset_url | stylesheet_tag }}
 {{ 'header-megamenu.css' | asset_url | stylesheet_tag }}
 
+<script src="{{ 'custom-header.js' | asset_url }}" defer></script>
+
 {% assign header_menu = section.settings.menu %}
 
 {% if header_menu == blank %}
@@ -160,7 +162,7 @@
                 stroke-linejoin="round"
               />
               <path
-                d="M16 10C16 11.0609 15.5784 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92157 13.5786 9.17157 12.8284C8.42172 12.0783 8 11.0609 8 10"
+                d="M16 10C16 11.0609 15.5784 12.0783 14.8284 12.8284C14.0786 13.5786 13.0609 14 12 14C10.9391 14 9.92157 13.5786 9.17157 12.8284C8.42172 12.0783 8 11.0609 8 10"
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"

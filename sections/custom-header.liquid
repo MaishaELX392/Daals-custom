@@ -3,7 +3,6 @@
 {{ 'header-megamenu.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'custom-header.js' | asset_url }}" defer></script>
-
 {% assign header_menu = section.settings.menu %}
 
 {% if header_menu == blank %}

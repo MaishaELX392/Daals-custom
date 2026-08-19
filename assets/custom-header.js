@@ -1,17 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const header = document.querySelector('.custom-header');
 
-  if (!header) return;
+  if (!header) {
+    return;
+  }
 
-  const handleScroll = () => {
+  function handleScroll() {
     if (window.scrollY > 10) {
       header.classList.add('is-sticky');
     } else {
       header.classList.remove('is-sticky');
     }
-  };
+  }
 
   handleScroll();
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('scroll', handleScroll);
 });

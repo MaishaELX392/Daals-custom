@@ -341,6 +341,18 @@
     "custom_collection_slider_wFTqGg": {
       "type": "custom-collection-slider",
       "blocks": {
+        "product_6qQkFL": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-oxygen"
+          }
+        },
+        "product_hybppQ": {
+          "type": "product",
+          "settings": {
+            "product": "the-compare-at-price-snowboard"
+          }
+        },
         "product_i7L7MD": {
           "type": "product",
           "settings": {
@@ -403,6 +415,8 @@
         }
       },
       "block_order": [
+        "product_6qQkFL",
+        "product_hybppQ",
         "product_i7L7MD",
         "product_k4xdfP",
         "product_FLyANV",

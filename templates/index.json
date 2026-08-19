@@ -340,6 +340,73 @@
     },
     "custom_collection_slider_wFTqGg": {
       "type": "custom-collection-slider",
+      "blocks": {
+        "product_k4xdfP": {
+          "type": "product",
+          "settings": {
+            "product": "the-out-of-stock-snowboard"
+          }
+        },
+        "product_FLyANV": {
+          "type": "product",
+          "settings": {
+            "product": "the-hidden-snowboard"
+          }
+        },
+        "product_NhFnTj": {
+          "type": "product",
+          "settings": {
+            "product": "the-videographer-snowboard"
+          }
+        },
+        "product_BxFNDC": {
+          "type": "product",
+          "settings": {
+            "product": "the-out-of-stock-snowboard"
+          }
+        },
+        "product_6myc6h": {
+          "type": "product",
+          "settings": {
+            "product": "the-multi-managed-snowboard"
+          }
+        },
+        "product_YrnQg6": {
+          "type": "product",
+          "settings": {
+            "product": "the-out-of-stock-snowboard"
+          }
+        },
+        "product_mwVMUU": {
+          "type": "product",
+          "settings": {
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        },
+        "product_3CnDNN": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-hydrogen"
+          }
+        },
+        "product_YGKLDL": {
+          "type": "product",
+          "settings": {
+            "product": "the-collection-snowboard-liquid"
+          }
+        }
+      },
+      "block_order": [
+        "product_k4xdfP",
+        "product_FLyANV",
+        "product_NhFnTj",
+        "product_BxFNDC",
+        "product_6myc6h",
+        "product_YrnQg6",
+        "product_mwVMUU",
+        "product_3CnDNN",
+        "product_YGKLDL"
+      ],
       "name": "Custom collection slider",
       "settings": {
         "heading": "New arrivals",
@@ -348,12 +415,181 @@
         "show_rating": false,
         "show_quick_add": true
       }
+    },
+    "custom_collection_slider_ppe64p": {
+      "type": "custom-collection-slider",
+      "blocks": {
+        "product_V7dLG7": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_FEdTnF": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_AGGRRA": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_AHrbxY": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_dnQKtP": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_PM3j3x": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_V7dLG7",
+        "product_FEdTnF",
+        "product_AGGRRA",
+        "product_AHrbxY",
+        "product_dnQKtP",
+        "product_PM3j3x"
+      ],
+      "name": "Custom collection slider",
+      "settings": {
+        "heading": "Our Garden Collections",
+        "description": "",
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quick_add": false
+      }
+    },
+    "reviews_dnkkzr": {
+      "type": "reviews",
+      "blocks": {
+        "review_Ua3bXP": {
+          "type": "review",
+          "settings": {
+            "title": "Amazing quality!",
+            "text": "The quality is amazing and the delivery was lovely. I would definitely recommend ordering from them.",
+            "name": "Depash"
+          }
+        },
+        "review_rdUkMw": {
+          "type": "review",
+          "settings": {
+            "title": "Perfect blend of style and function!",
+            "text": "Beautiful product, excellent quality and very easy to order. I am really happy with my purchase.",
+            "name": "Kenneth"
+          }
+        },
+        "review_WcFi7e": {
+          "type": "review",
+          "settings": {
+            "title": "Friendly & responsive team!",
+            "text": "The team was very helpful and responsive. Everything arrived exactly as expected.",
+            "name": "Sonia"
+          }
+        },
+        "review_cceqxr": {
+          "type": "review",
+          "settings": {
+            "title": "Beautiful product!",
+            "text": "I absolutely love the product. It looks even better in person and the quality is excellent.",
+            "name": "Sarah"
+          }
+        },
+        "review_Kcy3fN": {
+          "type": "review",
+          "settings": {
+            "title": "Excellent service!",
+            "text": "Great communication and fantastic service from start to finish. Highly recommended.",
+            "name": "Emma"
+          }
+        },
+        "review_cbidnV": {
+          "type": "review",
+          "settings": {
+            "title": "Would definitely buy again!",
+            "text": "A beautiful product and a really smooth shopping experience. I would happily order again.",
+            "name": "Jessica"
+          }
+        },
+        "logo_FqU8Ng": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "THE TIMES"
+          }
+        },
+        "logo_Q99FJT": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "itv"
+          }
+        },
+        "logo_9maphX": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "COSMOPOLITAN"
+          }
+        },
+        "logo_g4F7PB": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Ideal Home"
+          }
+        },
+        "logo_BFCkMy": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "apartment therapy"
+          }
+        },
+        "logo_ptawi6": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "theguardian"
+          }
+        }
+      },
+      "block_order": [
+        "review_Ua3bXP",
+        "review_rdUkMw",
+        "review_WcFi7e",
+        "review_cceqxr",
+        "review_Kcy3fN",
+        "review_cbidnV",
+        "logo_FqU8Ng",
+        "logo_Q99FJT",
+        "logo_9maphX",
+        "logo_g4F7PB",
+        "logo_BFCkMy",
+        "logo_ptawi6"
+      ],
+      "name": "Reviews",
+      "settings": {
+        "heading": "Don't just take our word",
+        "show_trustpilot": true,
+        "trustpilot_text": "Rated Excellent on",
+        "as_seen_in_text": "As Seen In:"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "product_list_fa6P9H",
     "featured_promos_JYnRfC",
-    "custom_collection_slider_wFTqGg"
+    "custom_collection_slider_wFTqGg",
+    "custom_collection_slider_ppe64p",
+    "reviews_dnkkzr"
   ]
 }

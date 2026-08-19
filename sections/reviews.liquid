@@ -28,9 +28,7 @@
           {% endif %}
 
           <span class="reviews-section__trustpilot-brand">
-            <span class="reviews-section__trustpilot-star">
-              ★
-            </span>
+            <span class="reviews-section__trustpilot-star">★</span>
             Trustpilot
           </span>
 
@@ -94,9 +92,7 @@
                   aria-label="5 out of 5 stars"
                 >
                   {% for i in (1..5) %}
-                    <span class="review-card__star">
-                      ★
-                    </span>
+                    <span class="review-card__star">★</span>
                   {% endfor %}
                 </div>
 
@@ -141,78 +137,151 @@
 
   </div>
 
-  {% assign logo_blocks = section.blocks | where: 'type', 'logo' %}
 
-  {% if logo_blocks.size > 0 %}
+  {%- comment -%}
+    PRESS LOGOS
+    These render even when no logo blocks have been added
+    to the existing Shopify section.
+  {%- endcomment -%}
 
-    <div class="reviews-press">
+  <div class="reviews-press">
 
-      <div class="reviews-press__inner">
+    <div class="reviews-press__inner">
 
-        {% if section.settings.as_seen_in_text != blank %}
-        {% endif %}
+      {% if section.settings.as_seen_in_text != blank %}
+        
+      {% endif %}
 
-        <div class="reviews-press__marquee">
+      <div class="reviews-press__marquee">
 
-          <div class="reviews-press__logos">
+        <div class="reviews-press__logos">
 
-            {% for block in logo_blocks %}
+          <div class="reviews-press__logo-group">
 
-              <div
-                class="reviews-press__logo"
-                {{ block.shopify_attributes }}
-              >
+            {% assign logo_blocks = section.blocks | where: 'type', 'logo' %}
 
-                {% if block.settings.logo != blank %}
+            {% if logo_blocks.size > 0 %}
 
-                  {{
-                    block.settings.logo
-                    | image_url: width: 400
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '120, 200, 300, 400'
-                  }}
+              {% for block in logo_blocks %}
 
-                {% elsif block.settings.logo_text != blank %}
+                <div
+                  class="reviews-press__logo"
+                  {{ block.shopify_attributes }}
+                >
 
-                  <span>
-                    {{ block.settings.logo_text }}
-                  </span>
+                  {% if block.settings.logo != blank %}
 
-                {% endif %}
+                    {{
+                      block.settings.logo
+                      | image_url: width: 400
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '120, 200, 300, 400'
+                    }}
 
+                  {% elsif block.settings.logo_text != blank %}
+
+                    <span>
+                      {{ block.settings.logo_text }}
+                    </span>
+
+                  {% endif %}
+
+                </div>
+
+              {% endfor %}
+
+            {% else %}
+
+              <div class="reviews-press__logo">
+                <span>THE TIMES</span>
               </div>
 
-            {% endfor %}
-
-            {% for block in logo_blocks %}
-
-              <div
-                class="reviews-press__logo"
-                aria-hidden="true"
-              >
-
-                {% if block.settings.logo != blank %}
-
-                  {{
-                    block.settings.logo
-                    | image_url: width: 400
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '120, 200, 300, 400'
-                  }}
-
-                {% elsif block.settings.logo_text != blank %}
-
-                  <span>
-                    {{ block.settings.logo_text }}
-                  </span>
-
-                {% endif %}
-
+              <div class="reviews-press__logo">
+                <span>itv</span>
               </div>
 
-            {% endfor %}
+              <div class="reviews-press__logo">
+                <span>COSMOPOLITAN</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>Ideal Home</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>apartment therapy</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>theguardian</span>
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div
+            class="reviews-press__logo-group"
+            aria-hidden="true"
+          >
+
+            {% if logo_blocks.size > 0 %}
+
+              {% for block in logo_blocks %}
+
+                <div class="reviews-press__logo">
+
+                  {% if block.settings.logo != blank %}
+
+                    {{
+                      block.settings.logo
+                      | image_url: width: 400
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '120, 200, 300, 400'
+                    }}
+
+                  {% elsif block.settings.logo_text != blank %}
+
+                    <span>
+                      {{ block.settings.logo_text }}
+                    </span>
+
+                  {% endif %}
+
+                </div>
+
+              {% endfor %}
+
+            {% else %}
+
+              <div class="reviews-press__logo">
+                <span>THE TIMES</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>itv</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>COSMOPOLITAN</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>Ideal Home</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>apartment therapy</span>
+              </div>
+
+              <div class="reviews-press__logo">
+                <span>theguardian</span>
+              </div>
+
+            {% endif %}
 
           </div>
 
@@ -222,9 +291,10 @@
 
     </div>
 
-  {% endif %}
+  </div>
 
 </section>
+
 
 {% schema %}
 {

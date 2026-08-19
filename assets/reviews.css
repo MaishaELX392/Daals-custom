@@ -219,6 +219,11 @@
   background: rgba(0, 0, 0, 0.25);
 }
 
+
+/* =========================================
+   PRESS LOGOS - CONTINUOUS MARQUEE
+   ========================================= */
+
 .reviews-press {
   position: absolute;
   right: 0;
@@ -240,9 +245,22 @@
   box-sizing: border-box;
 }
 
+.reviews-press__label {
+  flex: 0 0 auto;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
 .reviews-press__marquee {
   flex: 1;
   min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -250,9 +268,18 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 50px;
-  animation: reviews-logo-marquee 25s linear infinite;
+  flex-shrink: 0;
+  animation: reviews-logo-marquee 22s linear infinite;
   will-change: transform;
+}
+
+.reviews-press__logo-group {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex: 0 0 auto;
+  padding-right: 50px;
+  box-sizing: border-box;
 }
 
 .reviews-press__logo {
@@ -281,17 +308,33 @@
   opacity: 0.9;
 }
 
+
+/*
+  One complete logo group is followed immediately
+  by the identical second group.
+
+  The animation moves exactly half of the combined
+  track width, so the second group takes the place
+  of the first group when the animation restarts.
+*/
+
 @keyframes reviews-logo-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
+
+/* =========================================
+   TABLET
+   ========================================= */
+
 @media screen and (max-width: 900px) {
+
   .reviews-section {
     min-height: 0;
   }
@@ -321,12 +364,15 @@
   .reviews-press__marquee {
     flex: 1;
     min-width: 0;
-    overflow: hidden;
   }
 
   .reviews-press__logos {
+    animation-duration: 18s;
+  }
+
+  .reviews-press__logo-group {
     gap: 35px;
-    animation-duration: 20s;
+    padding-right: 35px;
   }
 
   .reviews-press__logo span {
@@ -337,9 +383,19 @@
     max-height: 28px;
     max-width: 130px;
   }
+
+  .reviews-press__label {
+    font-size: 13px;
+  }
 }
 
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media screen and (max-width: 600px) {
+
   .reviews-section__content {
     width: calc(100% - 30px);
     padding-top: 22px;
@@ -406,20 +462,36 @@
   }
 
   .reviews-press__label {
-    flex: 0 0 55px;
+    flex: 0 0 auto;
+    font-size: 11px;
   }
 
   .reviews-press__logos {
+    animation-duration: 15s;
+  }
+
+  .reviews-press__logo-group {
     gap: 30px;
-    animation-duration: 18s;
+    padding-right: 30px;
   }
 
   .reviews-press__logo span {
     font-size: 13px;
   }
+
+  .reviews-press__logo img {
+    max-width: 110px;
+    max-height: 25px;
+  }
 }
 
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
 @media screen and (max-width: 380px) {
+
   .review-card {
     gap: 8px;
     padding: 12px;
@@ -448,7 +520,15 @@
   }
 
   .reviews-press__logos {
+    animation-duration: 13s;
+  }
+
+  .reviews-press__logo-group {
     gap: 25px;
-    animation-duration: 16s;
+    padding-right: 25px;
+  }
+
+  .reviews-press__label {
+    font-size: 10px;
   }
 }

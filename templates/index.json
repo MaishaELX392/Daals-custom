@@ -530,42 +530,6 @@
             "text": "A beautiful product and a really smooth shopping experience. I would happily order again.",
             "name": "Jessica"
           }
-        },
-        "logo_FqU8Ng": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "THE TIMES"
-          }
-        },
-        "logo_Q99FJT": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "itv"
-          }
-        },
-        "logo_9maphX": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "COSMOPOLITAN"
-          }
-        },
-        "logo_g4F7PB": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "Ideal Home"
-          }
-        },
-        "logo_BFCkMy": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "apartment therapy"
-          }
-        },
-        "logo_ptawi6": {
-          "type": "logo",
-          "settings": {
-            "logo_text": "theguardian"
-          }
         }
       },
       "block_order": [
@@ -574,16 +538,11 @@
         "review_WcFi7e",
         "review_cceqxr",
         "review_Kcy3fN",
-        "review_cbidnV",
-        "logo_FqU8Ng",
-        "logo_Q99FJT",
-        "logo_9maphX",
-        "logo_g4F7PB",
-        "logo_BFCkMy",
-        "logo_ptawi6"
+        "review_cbidnV"
       ],
       "name": "Reviews",
       "settings": {
+        "background_image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
         "heading": "Don't just take our word",
         "show_trustpilot": true,
         "trustpilot_text": "Rated Excellent on",

@@ -1,159 +1,319 @@
 {{ 'benefits-section.css' | asset_url | stylesheet_tag }}
 
 <section
-  id="benefits-section-{{ section.id }}"
   class="benefits-section"
+  id="benefits-section-{{ section.id }}"
 >
   <div class="benefits-section__container">
     <div class="benefits-section__grid">
 
-      {% for block in section.blocks %}
-        <div
-          class="benefits-section__item"
-          {{ block.shopify_attributes }}
-        >
+      {% assign benefit_blocks = section.blocks | where: 'type', 'benefit' %}
 
-          {% if block.settings.title != blank %}
-            <h3 class="benefits-section__title">
-              {{ block.settings.title }}
-            </h3>
-          {% endif %}
+      {% if benefit_blocks.size > 0 %}
 
-          <div class="benefits-section__icon">
+        {% for block in benefit_blocks %}
 
-            {% if block.settings.icon != blank %}
+          <div
+            class="benefits-section__item"
+            {{ block.shopify_attributes }}
+          >
 
-              {{
-                block.settings.icon
-                | image_url: width: 100
-                | image_tag:
-                  class: 'benefits-section__icon-image',
-                  loading: 'lazy',
-                  widths: '50, 75, 100',
-                  sizes: '50px',
-                  alt: block.settings.title
-              }}
+            {% if block.settings.title != blank %}
+              <h3 class="benefits-section__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
 
-            {% else %}
+            <div class="benefits-section__icon">
 
-              {% case block.settings.icon_type %}
+              {% if block.settings.icon != blank %}
 
-                {% when 'delivery' %}
+                {{
+                  block.settings.icon
+                  | image_url: width: 100
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'benefits-section__icon-image',
+                    alt: block.settings.title
+                }}
 
-                  <svg
-                    class="benefits-section__icon-svg"
-                    width="42"
-                    height="42"
-                    viewBox="0 0 42 42"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M6 10.5H25.5V29H6V10.5Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M25.5 17H31.2L36 22.5V29H25.5V17Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <circle
-                      cx="12"
-                      cy="30"
-                      r="3"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    />
-                    <circle
-                      cx="30"
-                      cy="30"
-                      r="3"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    />
-                  </svg>
+              {% else %}
 
-                {% when 'payment' %}
+                {% case block.settings.icon_type %}
 
-                  <svg
-                    class="benefits-section__icon-svg"
-                    width="42"
-                    height="42"
-                    viewBox="0 0 42 42"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <rect
-                      x="7"
-                      y="10"
-                      width="28"
-                      height="22"
-                      rx="3"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M7 16H35"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M27 22H35V28H27C25.3431 28 24 26.6569 24 25C24 23.3431 25.3431 22 27 22Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    />
-                  </svg>
+                  {% when 'delivery' %}
 
-                {% when 'new' %}
+                    <svg
+                      class="benefits-section__icon-svg"
+                      width="42"
+                      height="42"
+                      viewBox="0 0 42 42"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 10.5H25.5V29H6V10.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M25.5 17H31.2L36 22.5V29H25.5V17Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <circle
+                        cx="12"
+                        cy="30"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <circle
+                        cx="30"
+                        cy="30"
+                        r="3"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
 
-                  <svg
-                    class="benefits-section__icon-svg"
-                    width="42"
-                    height="42"
-                    viewBox="0 0 42 42"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M21 6L22.8 13.2L30 15L22.8 16.8L21 24L19.2 16.8L12 15L19.2 13.2L21 6Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M31 22L32.1 26.4L36.5 27.5L32.1 28.6L31 33L29.9 28.6L25.5 27.5L29.9 26.4L31 22Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M11 25L11.8 28.2L15 29L11.8 29.8L11 33L10.2 29.8L7 29L10.2 28.2L11 25Z"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
+                  {% when 'payment' %}
 
-              {% endcase %}
+                    <svg
+                      class="benefits-section__icon-svg"
+                      width="42"
+                      height="42"
+                      viewBox="0 0 42 42"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="7"
+                        y="10"
+                        width="28"
+                        height="22"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M7 16H35"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                      <path
+                        d="M27 22H35V28H27C25.3431 28 24 26.6569 24 25C24 23.3431 25.3431 22 27 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      />
+                    </svg>
 
+                  {% when 'new' %}
+
+                    <svg
+                      class="benefits-section__icon-svg"
+                      width="42"
+                      height="42"
+                      viewBox="0 0 42 42"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M21 6L22.8 13.2L30 15L22.8 16.8L21 24L19.2 16.8L12 15L19.2 13.2L21 6Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M31 22L32.1 26.4L36.5 27.5L32.1 28.6L31 33L29.9 28.6L25.5 27.5L29.9 26.4L31 22Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M11 25L11.8 28.2L15 29L11.8 29.8L11 33L10.2 29.8L7 29L10.2 28.2L11 25Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                {% endcase %}
+
+              {% endif %}
+
+            </div>
+
+            {% if block.settings.description != blank %}
+              <div class="benefits-section__description">
+                {{ block.settings.description }}
+              </div>
             {% endif %}
 
           </div>
 
-          {% if block.settings.description != blank %}
-            <div class="benefits-section__description">
-              {{ block.settings.description }}
-            </div>
-          {% endif %}
+        {% endfor %}
+
+      {% else %}
+
+        <!-- DEFAULT BENEFIT 1 -->
+
+        <div class="benefits-section__item">
+
+          <h3 class="benefits-section__title">
+            Delivered by daals
+          </h3>
+
+          <div class="benefits-section__icon">
+
+            <svg
+              class="benefits-section__icon-svg"
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 10.5H25.5V29H6V10.5Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M25.5 17H31.2L36 22.5V29H25.5V17Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <circle
+                cx="12"
+                cy="30"
+                r="3"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="30"
+                cy="30"
+                r="3"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+
+          </div>
+
+          <div class="benefits-section__description">
+            <p>Free Standard Delivery on orders over £99</p>
+          </div>
 
         </div>
-      {% endfor %}
+
+
+        <!-- DEFAULT BENEFIT 2 -->
+
+        <div class="benefits-section__item">
+
+          <h3 class="benefits-section__title">
+            Flexible payment options
+          </h3>
+
+          <div class="benefits-section__icon">
+
+            <svg
+              class="benefits-section__icon-svg"
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <rect
+                x="7"
+                y="10"
+                width="28"
+                height="22"
+                rx="3"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M7 16H35"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M27 22H35V28H27C25.3431 28 24 26.6569 24 25C24 23.3431 25.3431 22 27 22Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+
+          </div>
+
+          <div class="benefits-section__description">
+            <p>Pay in 3 or 4 interest-free instalments with Klarna or Clearpay</p>
+          </div>
+
+        </div>
+
+
+        <!-- DEFAULT BENEFIT 3 -->
+
+        <div class="benefits-section__item">
+
+          <h3 class="benefits-section__title">
+            New Arrivals
+          </h3>
+
+          <div class="benefits-section__icon">
+
+            <svg
+              class="benefits-section__icon-svg"
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 6L22.8 13.2L30 15L22.8 16.8L21 24L19.2 16.8L12 15L19.2 13.2L21 6Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M31 22L32.1 26.4L36.5 27.5L32.1 28.6L31 33L29.9 28.6L25.5 27.5L29.9 28.6L25.5 27.5L29.9 26.4L31 22Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 25L11.8 28.2L15 29L11.8 29.8L11 33L10.2 29.8L7 29L10.2 28.2L11 25Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+          </div>
+
+          <div class="benefits-section__description">
+            <p>New styles added regularly. Check our latest exclusive designs</p>
+          </div>
+
+        </div>
+
+      {% endif %}
 
     </div>
   </div>
@@ -200,7 +360,7 @@
           "type": "image_picker",
           "id": "icon",
           "label": "Custom icon",
-          "info": "Upload an icon to replace the default icon."
+          "info": "Optional. Upload an icon to replace the default icon."
         },
         {
           "type": "richtext",

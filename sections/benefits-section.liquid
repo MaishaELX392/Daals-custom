@@ -1,8 +1,8 @@
 {{ 'benefits-section.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="benefits-section"
   id="benefits-section-{{ section.id }}"
+  class="benefits-section"
 >
   <div class="benefits-section__container">
     <div class="benefits-section__grid">
@@ -12,6 +12,7 @@
           class="benefits-section__item"
           {{ block.shopify_attributes }}
         >
+
           {% if block.settings.title != blank %}
             <h3 class="benefits-section__title">
               {{ block.settings.title }}
@@ -19,18 +20,26 @@
           {% endif %}
 
           <div class="benefits-section__icon">
+
             {% if block.settings.icon != blank %}
+
               {{
                 block.settings.icon
                 | image_url: width: 100
                 | image_tag:
-                  loading: 'lazy',
                   class: 'benefits-section__icon-image',
+                  loading: 'lazy',
+                  widths: '50, 75, 100',
+                  sizes: '50px',
                   alt: block.settings.title
               }}
+
             {% else %}
+
               {% case block.settings.icon_type %}
+
                 {% when 'delivery' %}
+
                   <svg
                     class="benefits-section__icon-svg"
                     width="42"
@@ -69,6 +78,7 @@
                   </svg>
 
                 {% when 'payment' %}
+
                   <svg
                     class="benefits-section__icon-svg"
                     width="42"
@@ -100,6 +110,7 @@
                   </svg>
 
                 {% when 'new' %}
+
                   <svg
                     class="benefits-section__icon-svg"
                     width="42"
@@ -128,8 +139,11 @@
                       stroke-linejoin="round"
                     />
                   </svg>
+
               {% endcase %}
+
             {% endif %}
+
           </div>
 
           {% if block.settings.description != blank %}
@@ -137,6 +151,7 @@
               {{ block.settings.description }}
             </div>
           {% endif %}
+
         </div>
       {% endfor %}
 
@@ -185,7 +200,7 @@
           "type": "image_picker",
           "id": "icon",
           "label": "Custom icon",
-          "info": "Optional. Upload an icon to replace the default icon."
+          "info": "Upload an icon to replace the default icon."
         },
         {
           "type": "richtext",

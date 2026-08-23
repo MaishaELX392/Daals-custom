@@ -1,8 +1,8 @@
 {{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
 
 <section
-  class="newsletter-section"
   id="newsletter-section-{{ section.id }}"
+  class="newsletter-section"
 >
   <div class="newsletter-section__container">
 
@@ -18,13 +18,8 @@
       </div>
     {% endif %}
 
-    {% if section.settings.privacy_text != blank %}
-      <div class="newsletter-section__privacy">
-        {{ section.settings.privacy_text }}
-      </div>
-    {% endif %}
-
     {% form 'customer', class: 'newsletter-section__form' %}
+
       <input
         type="hidden"
         name="contact[tags]"
@@ -64,7 +59,14 @@
           {{ form.errors | default_errors }}
         </div>
       {% endif %}
+
     {% endform %}
+
+    {% if section.settings.privacy_text != blank %}
+      <div class="newsletter-section__privacy">
+        {{ section.settings.privacy_text }}
+      </div>
+    {% endif %}
 
   </div>
 </section>
@@ -85,13 +87,13 @@
       "type": "richtext",
       "id": "description",
       "label": "Description",
-      "default": "<p>Sign up for carefully selected releases, room guidance, and<br>exclusive previews shaped by our design team.</p>"
+      "default": "<p>Sign up for carefully selected releases, room guidance, and exclusive previews shaped by our design team.</p>"
     },
     {
       "type": "richtext",
       "id": "privacy_text",
       "label": "Privacy text",
-      "default": "<p>By subscribing, you agree to our Privacy Policy and consent to receive<br>communications from daals.</p>"
+      "default": "<p>By subscribing, you agree to our Privacy Policy and consent to receive communications from daals.</p>"
     },
     {
       "type": "text",

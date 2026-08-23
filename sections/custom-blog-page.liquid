@@ -14,6 +14,24 @@
   >
     <div class="custom-blog-post__container">
 
+      {%- if section.settings.show_breadcrumbs -%}
+        <nav class="custom-blog-post__breadcrumbs" aria-label="Breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a>
+          <span class="custom-blog-post__breadcrumb-separator">/</span>
+          {%- if blog -%}
+            <a href="{{ blog.url }}">{{ blog.title }}</a>
+            <span class="custom-blog-post__breadcrumb-separator">/</span>
+          {%- endif -%}
+          <span class="custom-blog-post__breadcrumb-current">
+            {%- if section.settings.breadcrumb_title != blank -%}
+              {{ section.settings.breadcrumb_title }}
+            {%- else -%}
+              {{ article.title }}
+            {%- endif -%}
+          </span>
+        </nav>
+      {%- endif -%}
+
       <div class="custom-blog-post__hero-grid">
 
         <div class="custom-blog-post__hero-content">
@@ -175,11 +193,9 @@
   {% if article.content != blank %}
 
     <section class="custom-blog-post__content-section">
-
       <div class="custom-blog-post__content-container">
         {{ article.content }}
       </div>
-
     </section>
 
   {% endif %}
@@ -194,7 +210,23 @@
   "settings": [
     {
       "type": "header",
-      "content": "Hero content"
+      "content": "Breadcrumbs"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_title",
+      "label": "Current breadcrumb custom title",
+      "info": "Leave empty to use article title."
+    },
+    {
+      "type": "header",
+      "content": "Hero Content"
     },
     {
       "type": "text",
@@ -237,7 +269,7 @@
     },
     {
       "type": "header",
-      "content": "Article information"
+      "content": "Article Information"
     },
     {
       "type": "checkbox",
@@ -265,7 +297,7 @@
     },
     {
       "type": "header",
-      "content": "Hero image"
+      "content": "Hero Image"
     },
     {
       "type": "image_picker",
@@ -281,13 +313,13 @@
     },
     {
       "type": "header",
-      "content": "Hero design"
+      "content": "Hero Design"
     },
     {
-      "type": "color",
+      "type": "color_background",
       "id": "background_color",
-      "label": "Background color",
-      "default": "#F2F9E8"
+      "label": "Background gradient/color",
+      "default": "linear-gradient(135deg, rgba(255,245,215,0.6) 0%, rgba(215,245,245,0.6) 100%)"
     },
     {
       "type": "color",
@@ -313,7 +345,7 @@
       "max": 160,
       "step": 4,
       "unit": "px",
-      "default": 64
+      "default": 48
     },
     {
       "type": "range",

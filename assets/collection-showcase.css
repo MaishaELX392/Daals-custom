@@ -1,0 +1,184 @@
+/* ==========================================
+   Collection Banner Styles
+   ================================---------- */
+.custom-collection-banner {
+  position: relative;
+  background-image: var(--banner-bg);
+  background-size: cover;
+  background-position: center;
+  padding: 60px 0;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.custom-collection-banner__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* Darkens background image for readability */
+  z-index: 1;
+}
+
+.custom-collection-banner__content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.custom-collection-banner__title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+  font-family: serif;
+}
+
+.custom-collection-banner__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-height: 4.8em; /* Roughly 3 lines */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.custom-collection-banner__description.is-expanded {
+  max-height: 500px;
+}
+
+.custom-collection-banner__read-more {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   Custom Product Card Styles
+   ================================---------- */
+.custom-product-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.custom-product-card__image-wrapper {
+  position: relative;
+  background: #f4f4f4;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.custom-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.custom-product-card:hover .custom-product-card__img {
+  transform: scale(1.03);
+}
+
+/* Badge styling (e.g., Arriving Soon) */
+.custom-product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e0d4cc;
+  color: #333;
+  font-size: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Delivery Tag bar at bottom of image */
+.custom-product-delivery-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(245, 240, 235, 0.95);
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-product-card__info {
+  padding: 12px 0;
+}
+
+.custom-product-card__title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+}
+
+.custom-product-card__title a {
+  color: #111;
+  text-decoration: none;
+}
+
+.custom-product-card__title a:hover {
+  text-decoration: underline;
+}
+
+.custom-product-card__price {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.custom-product-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.custom-product-card__rating .stars {
+  color: #d4a373;
+  letter-spacing: 1px;
+}
+
+.custom-product-card__rating .rating-count {
+  color: #666;
+}
+
+/* Swatches */
+.custom-product-card__swatches {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.color-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: inline-block;
+}

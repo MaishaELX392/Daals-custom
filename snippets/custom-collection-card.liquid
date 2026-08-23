@@ -1,0 +1,66 @@
+{%- comment -%}
+  Renders a custom product card for the collection grid.
+  Accepts:
+  - product: {Object} Product Liquid object
+{%- endcomment -%}
+
+<div class="custom-product-card">
+  <div class="custom-product-card__image-wrapper">
+    <a href="{{ product.url }}" class="custom-product-card__link">
+      {%- if product.featured_image -%}
+        <img 
+          src="{{ product.featured_image | image_url: width: 600 }}" 
+          alt="{{ product.featured_image.alt | escape }}"
+          loading="lazy"
+          class="custom-product-card__img"
+          width="600"
+          height="{{ 600 | divided_by: product.featured_image.aspect_ratio | round }}"
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Example custom badge layout (e.g. Arriving Soon) {%- endcomment -%}
+    {%- if product.metafields.custom.badge_text != blank -%}
+      <span class="custom-product-badge">{{ product.metafields.custom.badge_text }}</span>
+    {%- endif -%}
+
+    {%- comment -%} Delivery Message Tag {%- endcomment -%}
+    <div class="custom-product-delivery-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+      <span>{{ product.metafields.custom.delivery_text | default: 'Available with Express Delivery' }}</span>
+    </div>
+  </div>
+
+  <div class="custom-product-card__info">
+    <h3 class="custom-product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    <div class="custom-product-card__price">
+      {%- if product.price_varies -%}
+        From {{ product.price_min | money }}
+      {%- else -%}
+        {{ product.price | money }}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Rating Mock / Integration {%- endcomment -%}
+    <div class="custom-product-card__rating">
+      <div class="stars">★★★★★</div>
+      <span class="rating-count">(737)</span>
+    </div>
+
+    {%- comment -%} Color Swatches Row {%- endcomment -%}
+    <div class="custom-product-card__swatches">
+      {%- for option in product.options_with_values -%}
+        {%- if option.name == 'Color' or option.name == 'Colour' -%}
+          {%- for value in option.values -%}
+            <span class="color-swatch" style="background-color: {{ value | handle }};" title="{{ value }}"></span>
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>

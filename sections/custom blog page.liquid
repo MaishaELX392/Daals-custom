@@ -26,13 +26,11 @@
           {% endif %}
 
           <h1 class="custom-blog-post__title">
-
             {% if section.settings.title != blank %}
               {{ section.settings.title }}
             {% else %}
               {{ article.title }}
             {% endif %}
-
           </h1>
 
           {% if section.settings.description != blank %}
@@ -48,7 +46,6 @@
             </div>
 
           {% endif %}
-
 
           {% if section.settings.show_author
             or section.settings.show_date
@@ -77,11 +74,9 @@
 
                   {% else %}
 
-                    <div class="custom-blog-post__author-image custom-blog-post__author-placeholder">
-                    </div>
+                    <div class="custom-blog-post__author-image custom-blog-post__author-placeholder"></div>
 
                   {% endif %}
-
 
                   <div class="custom-blog-post__author-info">
 
@@ -99,23 +94,25 @@
 
                     {% endif %}
 
-
                     <div class="custom-blog-post__author-details">
 
                       {% if section.settings.show_date %}
 
                         {% if section.settings.date_text != blank %}
+
                           <span>
                             {{ section.settings.date_text }}
                           </span>
-                        {% else %}
+
+                        {% elsif article.published_at != blank %}
+
                           <span>
                             {{ article.published_at | date: '%B %d, %Y' }}
                           </span>
+
                         {% endif %}
 
                       {% endif %}
-
 
                       {% if section.settings.show_date
                         and section.settings.show_read_time
@@ -127,13 +124,14 @@
 
                       {% endif %}
 
-
                       {% if section.settings.show_read_time %}
 
                         {% if section.settings.read_time != blank %}
+
                           <span>
                             {{ section.settings.read_time }}
                           </span>
+
                         {% endif %}
 
                       {% endif %}
@@ -151,7 +149,6 @@
           {% endif %}
 
         </div>
-
 
         <div class="custom-blog-post__hero-media">
 
@@ -196,41 +193,26 @@
   </section>
 
 
-  <section class="custom-blog-post__content-section">
+  {% if article.content != blank %}
 
-    <div class="custom-blog-post__content-container">
+    <section class="custom-blog-post__content-section">
 
-      {% content_for 'block',
-        type: '_blog-post-content',
-        id: 'blog-post-content'
-      %}
+      <div class="custom-blog-post__content-container">
+        {{ article.content }}
+      </div>
 
-    </div>
+    </section>
 
-  </section>
+  {% endif %}
 
 </article>
 
 
 {% schema %}
 {
-  "name": "Main blog post",
+  "name": "Custom Blog Post",
   "tag": "section",
-  "class": "section-main-blog-post",
-  "blocks": [
-    {
-      "type": "text"
-    },
-    {
-      "type": "_blog-post-info-text"
-    },
-    {
-      "type": "image"
-    },
-    {
-      "type": "_blog-post-content"
-    }
-  ],
+  "class": "section-custom-blog-post",
   "settings": [
     {
       "type": "header",
@@ -289,7 +271,6 @@
       "type": "text",
       "id": "date_text",
       "label": "Date",
-      "default": "June 12, 2026",
       "info": "Leave empty to use the article publication date."
     },
     {
@@ -369,7 +350,7 @@
   ],
   "presets": [
     {
-      "name": "Main blog post"
+      "name": "Custom Blog Post"
     }
   ]
 }

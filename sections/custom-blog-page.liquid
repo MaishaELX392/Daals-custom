@@ -42,14 +42,6 @@
             </div>
           {% endif %}
 
-          <h1 class="custom-blog-post__title">
-            {% if section.settings.title != blank %}
-              {{ section.settings.title }}
-            {% else %}
-              {{ article.title }}
-            {% endif %}
-          </h1>
-
           {% if section.settings.description != blank %}
             <div class="custom-blog-post__description">
               {{ section.settings.description }}
@@ -233,12 +225,6 @@
       "id": "eyebrow",
       "label": "Eyebrow",
       "default": "Blog"
-    },
-    {
-      "type": "textarea",
-      "id": "title",
-      "label": "Title",
-      "info": "Leave empty to automatically use the article title."
     },
     {
       "type": "richtext",

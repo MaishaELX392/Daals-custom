@@ -1,0 +1,25 @@
+{% if block.settings.image != blank %}
+  <figure
+    id="{{ block.settings.anchor_id | handleize }}"
+    class="article-hangover__image-block"
+    {{ block.shopify_attributes }}
+  >
+    <div class="article-hangover__image-wrapper">
+      {{
+        block.settings.image
+        | image_url: width: 1400
+        | image_tag:
+          loading: 'lazy',
+          widths: '400, 600, 800, 1000, 1200, 1400',
+          sizes: '(min-width: 990px) 65vw, 100vw',
+          class: 'article-hangover__image'
+      }}
+    </div>
+
+    {% if block.settings.caption != blank %}
+      <figcaption class="article-hangover__caption">
+        {{ block.settings.caption }}
+      </figcaption>
+    {% endif %}
+  </figure>
+{% endif %}

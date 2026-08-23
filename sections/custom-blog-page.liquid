@@ -1,4 +1,4 @@
-{{ 'main-blog-post.css' | asset_url | stylesheet_tag }}
+{{ 'custom-blog-page.css' | asset_url | stylesheet_tag }}
 
 <article class="custom-blog-post">
 
@@ -12,7 +12,6 @@
       --article-hero-padding-bottom: {{ section.settings.padding_bottom }}px;
     "
   >
-
     <div class="custom-blog-post__container">
 
       <div class="custom-blog-post__hero-grid">
@@ -34,17 +33,13 @@
           </h1>
 
           {% if section.settings.description != blank %}
-
             <div class="custom-blog-post__description">
               {{ section.settings.description }}
             </div>
-
           {% elsif article.excerpt != blank %}
-
             <div class="custom-blog-post__description">
               {{ article.excerpt }}
             </div>
-
           {% endif %}
 
           {% if section.settings.show_author
@@ -81,17 +76,13 @@
                   <div class="custom-blog-post__author-info">
 
                     {% if section.settings.author_name != blank %}
-
                       <div class="custom-blog-post__author-name">
                         {{ section.settings.author_name }}
                       </div>
-
                     {% elsif article.author != blank %}
-
                       <div class="custom-blog-post__author-name">
                         {{ article.author }}
                       </div>
-
                     {% endif %}
 
                     <div class="custom-blog-post__author-details">
@@ -99,17 +90,13 @@
                       {% if section.settings.show_date %}
 
                         {% if section.settings.date_text != blank %}
-
                           <span>
                             {{ section.settings.date_text }}
                           </span>
-
                         {% elsif article.published_at != blank %}
-
                           <span>
                             {{ article.published_at | date: '%B %d, %Y' }}
                           </span>
-
                         {% endif %}
 
                       {% endif %}
@@ -117,23 +104,17 @@
                       {% if section.settings.show_date
                         and section.settings.show_read_time
                       %}
-
                         <span class="custom-blog-post__meta-separator">
                           ·
                         </span>
-
                       {% endif %}
 
                       {% if section.settings.show_read_time %}
-
                         {% if section.settings.read_time != blank %}
-
                           <span>
                             {{ section.settings.read_time }}
                           </span>
-
                         {% endif %}
-
                       {% endif %}
 
                     </div>
@@ -189,9 +170,7 @@
       </div>
 
     </div>
-
   </section>
-
 
   {% if article.content != blank %}
 
@@ -206,7 +185,6 @@
   {% endif %}
 
 </article>
-
 
 {% schema %}
 {

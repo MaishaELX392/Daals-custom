@@ -232,7 +232,7 @@
         "padding-block-end": 32
       }
     },
-    "collection_showcase_6iUEKG": {
+    "collection_showcase_497hYJ": {
       "type": "collection-showcase",
       "name": "Collection Showcase",
       "settings": {
@@ -243,6 +243,6 @@
   "order": [
     "section",
     "main",
-    "collection_showcase_6iUEKG"
+    "collection_showcase_497hYJ"
   ]
 }

@@ -169,6 +169,10 @@
   "class": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Collection Banner"
+    },
+    {
       "type": "image_picker",
       "id": "banner_image",
       "label": "Banner Background Image"
@@ -178,7 +182,7 @@
       "id": "banner_title",
       "label": "Banner Title",
       "default": "Living Room Furniture",
-      "info": "Leave blank to use the default collection title."
+      "info": "Leave blank to hide the title."
     },
     {
       "type": "textarea",
@@ -189,14 +193,18 @@
     {
       "type": "text",
       "id": "read_more_text",
-      "label": "Read More Button Text",
+      "label": "Read More Text",
       "default": "READ MORE"
     },
     {
       "type": "text",
       "id": "read_less_text",
-      "label": "Read Less Button Text",
+      "label": "Read Less Text",
       "default": "READ LESS"
+    },
+    {
+      "type": "header",
+      "content": "Product Grid"
     },
     {
       "type": "range",
@@ -211,7 +219,7 @@
   "blocks": [
     {
       "type": "featured_product",
-      "name": "Add Product Card",
+      "name": "Featured Product",
       "settings": [
         {
           "type": "product",

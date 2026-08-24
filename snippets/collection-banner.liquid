@@ -1,18 +1,18 @@
 {{ 'collection-showcase.css' | asset_url | stylesheet_tag }}
 
-<div class="custom-collection-banner" style="--banner-bg: {% if collection.image %}url({{ collection.image | image_url: width: 2000 }}){% else %}none{% endif %};">
+<div class="custom-collection-banner" style="--banner-bg: {% if banner_image %}url({{ banner_image | image_url: width: 2000 }}){% else %}none{% endif %};">
   <div class="custom-collection-banner__overlay"></div>
   <div class="page-width custom-collection-banner__content">
-    <h1 class="custom-collection-banner__title">{{ collection.title }}</h1>
+    <h1 class="custom-collection-banner__title">{{ banner_title | default: collection.title }}</h1>
     
-    {% if collection.description != blank %}
+    {% if banner_description != blank %}
       <div class="custom-collection-banner__description-wrapper">
         <div class="custom-collection-banner__description rte" id="CollectionDescription">
-          {{ collection.description }}
+          {{ banner_description }}
         </div>
         <button type="button" class="custom-collection-banner__read-more" aria-expanded="false" aria-controls="CollectionDescription">
-          <span class="text-read">READ MORE</span>
-          <span class="text-less" style="display: none;">READ LESS</span>
+          <span class="text-read">{{ read_more_text | default: 'READ MORE' }}</span>
+          <span class="text-less" style="display: none;">{{ read_less_text | default: 'READ LESS' }}</span>
         </button>
       </div>
     {% endif %}
@@ -25,7 +25,6 @@
     const descWrapper = document.querySelector('.custom-collection-banner__description');
     
     if (readMoreBtn && descWrapper) {
-      // Simple logic to check if content overflows or needs truncation styling
       readMoreBtn.addEventListener('click', function() {
         const isExpanded = descWrapper.classList.toggle('is-expanded');
         this.setAttribute('aria-expanded', isExpanded);

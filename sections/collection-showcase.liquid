@@ -2,12 +2,18 @@
 
 <div class="section-collection-showcase collection-section-{{ section.id }}" data-section-id="{{ section.id }}">
   
-  {%- comment -%} 1. Render Collection Banner Snippet {%- endcomment -%}
-  {%- render 'collection-banner' -%}
+  {%- comment -%} 1. Render Collection Banner with Customizable Text & Image Settings {%- endcomment -%}
+  {%- render 'collection-banner', 
+    banner_image: section.settings.banner_image, 
+    banner_title: section.settings.banner_title, 
+    banner_description: section.settings.banner_description,
+    read_more_text: section.settings.read_more_text,
+    read_less_text: section.settings.read_less_text
+  -%}
 
   <div class="page-width">
     
-    {%- comment -%} 2. Filter and Sort Controls Bar (Matching Screenshot) {%- endcomment -%}
+    {%- comment -%} 2. Filter and Sort Controls Bar (Kept intact) {%- endcomment -%}
     <div class="collection-toolbar">
       <div class="collection-toolbar__filters">
         <button type="button" class="collection-toolbar__btn js-filter-toggle">
@@ -25,7 +31,7 @@
           <span class="sort-icon">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="10" y1="18" x2="14" y2="18"></line></svg>
           </span>
-          <label for="SortBy" class="visually-hidden">{{ 'sections.collection_template.sort_by_label' | t }}</label>
+          <label for="SortBy" class="visually-hidden">Sort by</label>
           <select name="sort_by" id="SortBy" class="collection-toolbar__sort-select">
             {%- for option in collection.sort_options -%}
               <option value="{{ option.value | escape }}" {% if option.value == collection.sort_by %}selected="selected"{% endif %}>{{ option.name | escape }}</option>
@@ -35,17 +41,32 @@
       </div>
     </div>
 
-    {%- comment -%} 3. Product Grid Loop using Custom Card Snippet {%- endcomment -%}
-    {%- paginate collection.products by section.id | default: 12 -%}
-      {%- if collection.products.size == 0 -%}
+    {%- comment -%} 3. Product Grid Loop (3 Cards per row) + Manually Added Product Blocks {%- endcomment -%}
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size == 0 and section.blocks.size == 0 -%}
         <div class="collection collection--empty page-width" id="main-collection-product-grid" data-id="{{ section.id }}">
           <p class="collection-empty-message">No products found matching your criteria.</p>
         </div>
       {%- else -%}
         <div class="custom-collection-grid" data-id="{{ section.id }}">
+          
+          {%- comment -%} Render manually added product blocks first {%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'featured_product' -%}
+                {%- if block.settings.product != blank -%}
+                  <div class="grid-block-item" {{ block.shopify_attributes }}>
+                    {%- render 'custom-collection-card', product: block.settings.product -%}
+                  </div>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+
+          {%- comment -%} Render normal collection products loop {%- endcomment -%}
           {%- for product in collection.products -%}
             {%- render 'custom-collection-card', product: product -%}
           {%- endfor -%}
+
         </div>
 
         {%- if paginate.pages > 1 -%}
@@ -95,6 +116,7 @@
     align-items: center;
     gap: 6px;
   }
+  /* Exactly 3 Cards per Row */
   .custom-collection-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -114,9 +136,8 @@
 </style>
 
 <script>
-  // Simple sorting handler script
   Shopify.queryParams = {};
-  if.location.search.length) {
+  if (location.search.length) {
     var queryParams = location.search.substr(1).split('&');
     for (var i = 0; i < queryParams.length; i++) {
       var keyValue = queryParams[i].split('=');
@@ -145,13 +166,56 @@
   "class": "section",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Banner Title",
+      "default": "Living Room Furniture",
+      "info": "Leave blank to use the default collection title."
+    },
+    {
+      "type": "textarea",
+      "id": "banner_description",
+      "label": "Banner Description",
+      "default": "Your living room, where everyday moments and memorable gatherings unfold. Explore our hand-crafted curated pieces..."
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read More Button Text",
+      "default": "READ MORE"
+    },
+    {
+      "type": "text",
+      "id": "read_less_text",
+      "label": "Read Less Button Text",
+      "default": "READ LESS"
+    },
+    {
       "type": "range",
       "id": "products_per_page",
-      "min": 8,
+      "min": 6,
       "max": 36,
-      "step": 4,
+      "step": 3,
       "default": 12,
       "label": "Products per page"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_product",
+      "name": "Add Product Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
     }
   ],
   "presets": [

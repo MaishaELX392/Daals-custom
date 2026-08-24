@@ -505,6 +505,54 @@
         "trustpilot_text": "Rated Excellent on",
         "as_seen_in_text": "As Seen In:"
       }
+    },
+    "newsletter_section_HjXzQb": {
+      "type": "newsletter-section",
+      "name": "Newsletter section",
+      "settings": {
+        "heading": "Better decisions, delivered.",
+        "description": "<p>Sign up for carefully selected releases, room guidance, and exclusive previews shaped by our design team.</p>",
+        "privacy_text": "<p>By subscribing, you agree to our Privacy Policy and consent to receive communications from daals.</p>",
+        "placeholder": "Enter your email address",
+        "button_text": "SUBSCRIBE",
+        "success_message": "Thank you for subscribing!"
+      }
+    },
+    "benefits_section_86i6Xi": {
+      "type": "benefits-section",
+      "blocks": {
+        "benefit_cYPgC6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Delivered by daals",
+            "icon_type": "delivery",
+            "description": "<p>Free Standard Delivery on orders over £99</p>"
+          }
+        },
+        "benefit_FGmbfg": {
+          "type": "benefit",
+          "settings": {
+            "title": "Flexible payment options",
+            "icon_type": "payment",
+            "description": "<p>Pay in 3 or 4 interest-free instalments with Klarna or Clearpay</p>"
+          }
+        },
+        "benefit_VjzfWm": {
+          "type": "benefit",
+          "settings": {
+            "title": "New Arrivals",
+            "icon_type": "new",
+            "description": "<p>New styles added regularly. Check our latest exclusive designs</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_cYPgC6",
+        "benefit_FGmbfg",
+        "benefit_VjzfWm"
+      ],
+      "name": "Benefits section",
+      "settings": {}
     }
   },
   "order": [
@@ -512,6 +560,8 @@
     "product_list_fa6P9H",
     "featured_promos_JYnRfC",
     "custom_collection_slider_wFTqGg",
-    "reviews_dnkkzr"
+    "reviews_dnkkzr",
+    "newsletter_section_HjXzQb",
+    "benefits_section_86i6Xi"
   ]
 }

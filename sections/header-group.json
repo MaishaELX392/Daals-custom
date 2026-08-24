@@ -13,7 +13,6 @@
   "sections": {
     "header_section": {
       "type": "header",
-      "disabled": true,
       "settings": {}
     },
     "header_announcements_AhqBRH": {

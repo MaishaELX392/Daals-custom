@@ -232,8 +232,19 @@
         "padding-block-end": 32
       }
     },
-    "collection_showcase_497hYJ": {
+    "collection_showcase_nzUt6b": {
       "type": "collection-showcase",
+      "blocks": {
+        "featured_product_jaQ9dj": {
+          "type": "featured_product",
+          "settings": {
+            "product": "the-3p-fulfilled-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "featured_product_jaQ9dj"
+      ],
       "name": "Collection Showcase",
       "settings": {
         "products_per_page": 12
@@ -243,6 +254,6 @@
   "order": [
     "section",
     "main",
-    "collection_showcase_497hYJ"
+    "collection_showcase_nzUt6b"
   ]
 }

@@ -46,7 +46,6 @@
         "announcement_bzYH9r",
         "announcement_6xDMhW"
       ],
-      "disabled": true,
       "name": "Announcement bar",
       "settings": {
         "background_color": "#774d43",
@@ -60,7 +59,6 @@
     },
     "custom_header_VHAzXJ": {
       "type": "custom-header",
-      "disabled": true,
       "name": "Custom header",
       "settings": {
         "logo_width": 150,

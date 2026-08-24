@@ -1,6 +1,3 @@
-/* ==========================================
-   Collection Banner Styles
-   ================================---------- */
 .custom-collection-banner {
   position: relative;
   background-image: var(--banner-bg);
@@ -13,11 +10,10 @@
 
 .custom-collection-banner__overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45); /* Darkens background image for readability */
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
@@ -31,7 +27,7 @@
 .custom-collection-banner__title {
   font-size: 2.5rem;
   font-weight: 400;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
   font-family: serif;
 }
 
@@ -39,7 +35,7 @@
   font-size: 0.95rem;
   line-height: 1.6;
   opacity: 0.9;
-  max-height: 4.8em; /* Roughly 3 lines */
+  max-height: 4.8em;
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
@@ -61,9 +57,16 @@
   text-decoration: underline;
 }
 
-/* ==========================================
-   Custom Product Card Styles
-   ================================---------- */
+.custom-collection-banner__read-more .text-less {
+  display: none;
+}
+
+.custom-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
 .custom-product-card {
   display: flex;
   flex-direction: column;
@@ -79,7 +82,14 @@
   overflow: hidden;
 }
 
+.custom-product-card__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .custom-product-card__img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -90,38 +100,36 @@
   transform: scale(1.03);
 }
 
-/* Badge styling (e.g., Arriving Soon) */
 .custom-product-badge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #e0d4cc;
-  color: #333;
-  font-size: 0.75rem;
-  padding: 8px 12px;
-  border-radius: 50%;
   width: 55px;
   height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #e0d4cc;
+  color: #333333;
+  font-size: 0.75rem;
+  padding: 8px;
+  border-radius: 50%;
   text-align: center;
   font-weight: 500;
 }
 
-/* Delivery Tag bar at bottom of image */
 .custom-product-delivery-tag {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(245, 240, 235, 0.95);
-  padding: 6px 10px;
-  font-size: 0.75rem;
-  color: #333;
   display: flex;
   align-items: center;
   gap: 6px;
+  background: rgba(245, 240, 235, 0.95);
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  color: #333333;
 }
 
 .custom-product-card__info {
@@ -131,11 +139,11 @@
 .custom-product-card__title {
   font-size: 0.95rem;
   font-weight: 400;
-  margin: 0 0 6px 0;
+  margin: 0 0 6px;
 }
 
 .custom-product-card__title a {
-  color: #111;
+  color: #111111;
   text-decoration: none;
 }
 
@@ -147,7 +155,7 @@
   font-weight: 600;
   font-size: 0.95rem;
   margin-bottom: 6px;
-  color: #111;
+  color: #111111;
 }
 
 .custom-product-card__rating {
@@ -164,10 +172,9 @@
 }
 
 .custom-product-card__rating .rating-count {
-  color: #666;
+  color: #666666;
 }
 
-/* Swatches */
 .custom-product-card__swatches {
   display: flex;
   gap: 6px;
@@ -176,9 +183,55 @@
 }
 
 .color-swatch {
+  display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 1px solid #ccc;
-  display: inline-block;
+  border: 1px solid #cccccc;
+}
+
+.collection-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 0;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.collection-toolbar__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.collection-toolbar__product-count {
+  color: #555555;
+}
+
+.sort-by-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.collection-toolbar__sort-select {
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.collection-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }

@@ -1,163 +1,166 @@
 {{ 'collection-showcase.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'collection-showcase.js' | asset_url }}" defer></script>
 
-<div class="section-collection-showcase collection-section-{{ section.id }}" data-section-id="{{ section.id }}">
-  
-  {%- comment -%} 1. Render Collection Banner with Customizable Text & Image Settings {%- endcomment -%}
-  {%- render 'collection-banner', 
-    banner_image: section.settings.banner_image, 
-    banner_title: section.settings.banner_title, 
+<div
+  class="section-collection-showcase collection-section-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+>
+  {% render 'collection-banner',
+    banner_image: section.settings.banner_image,
+    banner_title: section.settings.banner_title,
     banner_description: section.settings.banner_description,
     read_more_text: section.settings.read_more_text,
     read_less_text: section.settings.read_less_text
-  -%}
+  %}
 
   <div class="page-width">
-    
-    {%- comment -%} 2. Filter and Sort Controls Bar (Kept intact) {%- endcomment -%}
+
     <div class="collection-toolbar">
+
       <div class="collection-toolbar__filters">
-        <button type="button" class="collection-toolbar__btn js-filter-toggle">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+        <button
+          type="button"
+          class="collection-toolbar__btn js-filter-toggle"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+
           Filters
         </button>
       </div>
 
       <div class="collection-toolbar__product-count">
-        Viewing {{ paginate.current_offset | plus: 1 }} - {%- if paginate.next -%}{{ paginate.current_offset | plus: paginate.page_size }}{%- else -%}{{ collection.products_count }}{%- endif -%} of {{ collection.products_count }} products
+        Viewing
+        {{ paginate.current_offset | plus: 1 }}
+        -
+        {% if paginate.next %}
+          {{ paginate.current_offset | plus: paginate.page_size }}
+        {% else %}
+          {{ collection.products_count }}
+        {% endif %}
+        of {{ collection.products_count }} products
       </div>
 
       <div class="collection-toolbar__sort">
         <div class="sort-by-wrapper">
+
           <span class="sort-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="6" y1="12" x2="18" y2="12"></line><line x1="10" y1="18" x2="14" y2="18"></line></svg>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="6" y1="12" x2="18" y2="12"></line>
+              <line x1="10" y1="18" x2="14" y2="18"></line>
+            </svg>
           </span>
-          <label for="SortBy" class="visually-hidden">Sort by</label>
-          <select name="sort_by" id="SortBy" class="collection-toolbar__sort-select">
-            {%- for option in collection.sort_options -%}
-              <option value="{{ option.value | escape }}" {% if option.value == collection.sort_by %}selected="selected"{% endif %}>{{ option.name | escape }}</option>
-            {%- endfor -%}
+
+          <label for="SortBy" class="visually-hidden">
+            Sort by
+          </label>
+
+          <select
+            name="sort_by"
+            id="SortBy"
+            class="collection-toolbar__sort-select"
+          >
+            {% for option in collection.sort_options %}
+              <option
+                value="{{ option.value | escape }}"
+                {% if option.value == collection.sort_by %}
+                  selected
+                {% endif %}
+              >
+                {{ option.name | escape }}
+              </option>
+            {% endfor %}
           </select>
+
         </div>
       </div>
+
     </div>
 
-    {%- comment -%} 3. Product Grid Loop (3 Cards per row) + Manually Added Product Blocks {%- endcomment -%}
-    {%- paginate collection.products by section.settings.products_per_page -%}
-      {%- if collection.products.size == 0 and section.blocks.size == 0 -%}
-        <div class="collection collection--empty page-width" id="main-collection-product-grid" data-id="{{ section.id }}">
-          <p class="collection-empty-message">No products found matching your criteria.</p>
+    {% paginate collection.products by section.settings.products_per_page %}
+
+      {% if collection.products.size == 0 and section.blocks.size == 0 %}
+
+        <div
+          class="collection collection--empty page-width"
+          id="main-collection-product-grid"
+          data-id="{{ section.id }}"
+        >
+          <p class="collection-empty-message">
+            No products found matching your criteria.
+          </p>
         </div>
-      {%- else -%}
-        <div class="custom-collection-grid" data-id="{{ section.id }}">
-          
-          {%- comment -%} Render manually added product blocks first {%- endcomment -%}
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'featured_product' -%}
-                {%- if block.settings.product != blank -%}
-                  <div class="grid-block-item" {{ block.shopify_attributes }}>
-                    {%- render 'custom-collection-card', product: block.settings.product -%}
+
+      {% else %}
+
+        <div
+          class="custom-collection-grid"
+          data-id="{{ section.id }}"
+        >
+
+          {% for block in section.blocks %}
+            {% case block.type %}
+
+              {% when 'featured_product' %}
+
+                {% if block.settings.product != blank %}
+                  <div
+                    class="grid-block-item"
+                    {{ block.shopify_attributes }}
+                  >
+                    {% render 'custom-collection-card',
+                      product: block.settings.product
+                    %}
                   </div>
-                {%- endif -%}
-            {%- endcase -%}
-          {%- endfor -%}
+                {% endif %}
 
-          {%- comment -%} Render normal collection products loop {%- endcomment -%}
-          {%- for product in collection.products -%}
-            {%- render 'custom-collection-card', product: product -%}
-          {%- endfor -%}
+            {% endcase %}
+          {% endfor %}
+
+          {% for product in collection.products %}
+            {% render 'custom-collection-card',
+              product: product
+            %}
+          {% endfor %}
 
         </div>
 
-        {%- if paginate.pages > 1 -%}
+        {% if paginate.pages > 1 %}
           <div class="collection-pagination">
             {{ paginate | default_pagination }}
           </div>
-        {%- endif -%}
-      {%- endif -%}
-    {%- endpaginate -%}
+        {% endif %}
+
+      {% endif %}
+
+    {% endpaginate %}
 
   </div>
 </div>
-
-<style>
-  .collection-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 12px 0;
-    margin-bottom: 30px;
-    font-size: 0.9rem;
-  }
-  .collection-toolbar__btn {
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 0;
-  }
-  .collection-toolbar__product-count {
-    color: #555;
-  }
-  .collection-toolbar__sort-select {
-    border: none;
-    background: transparent;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .sort-by-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  /* Exactly 3 Cards per Row */
-  .custom-collection-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-  @media screen and (max-width: 989px) {
-    .custom-collection-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-  }
-  @media screen and (max-width: 749px) {
-    .custom-collection-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-
-<script>
-  Shopify.queryParams = {};
-  if (location.search.length) {
-    var queryParams = location.search.substr(1).split('&');
-    for (var i = 0; i < queryParams.length; i++) {
-      var keyValue = queryParams[i].split('=');
-      if (keyValue.length > 1) {
-        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
-      }
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const sortSelect = document.querySelector('#SortBy');
-    if (sortSelect) {
-      sortSelect.addEventListener('change', function(e) {
-        var value = e.target.value;
-        Shopify.queryParams.sort_by = value;
-        location.search = new URLSearchParams(Shopify.queryParams).toString();
-      });
-    }
-  });
-</script>
 
 {% schema %}
 {

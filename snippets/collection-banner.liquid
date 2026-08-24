@@ -1,36 +1,53 @@
-{{ 'collection-showcase.css' | asset_url | stylesheet_tag }}
+<div
+  class="custom-collection-banner"
+  style="
+    --banner-bg:
+    {% if banner_image %}
+      url('{{ banner_image | image_url: width: 2000 }}')
+    {% else %}
+      none
+    {% endif %};
+  "
+>
 
-<div class="custom-collection-banner" style="--banner-bg: {% if banner_image %}url({{ banner_image | image_url: width: 2000 }}){% else %}none{% endif %};">
   <div class="custom-collection-banner__overlay"></div>
+
   <div class="page-width custom-collection-banner__content">
-    <h1 class="custom-collection-banner__title">{{ banner_title | default: collection.title }}</h1>
-    
+
+    <h1 class="custom-collection-banner__title">
+      {{ banner_title | default: collection.title }}
+    </h1>
+
     {% if banner_description != blank %}
+
       <div class="custom-collection-banner__description-wrapper">
-        <div class="custom-collection-banner__description rte" id="CollectionDescription">
+
+        <div
+          class="custom-collection-banner__description rte"
+          id="CollectionDescription-{{ section.id }}"
+        >
           {{ banner_description }}
         </div>
-        <button type="button" class="custom-collection-banner__read-more" aria-expanded="false" aria-controls="CollectionDescription">
-          <span class="text-read">{{ read_more_text | default: 'READ MORE' }}</span>
-          <span class="text-less" style="display: none;">{{ read_less_text | default: 'READ LESS' }}</span>
-        </button>
-      </div>
-    {% endif %}
-  </div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const readMoreBtn = document.querySelector('.custom-collection-banner__read-more');
-    const descWrapper = document.querySelector('.custom-collection-banner__description');
-    
-    if (readMoreBtn && descWrapper) {
-      readMoreBtn.addEventListener('click', function() {
-        const isExpanded = descWrapper.classList.toggle('is-expanded');
-        this.setAttribute('aria-expanded', isExpanded);
-        this.querySelector('.text-read').style.display = isExpanded ? 'none' : 'inline';
-        this.querySelector('.text-less').style.display = isExpanded ? 'inline' : 'none';
-      });
-    }
-  });
-</script>
+        <button
+          type="button"
+          class="custom-collection-banner__read-more"
+          aria-expanded="false"
+          aria-controls="CollectionDescription-{{ section.id }}"
+        >
+          <span class="text-read">
+            {{ read_more_text | default: 'READ MORE' }}
+          </span>
+
+          <span class="text-less">
+            {{ read_less_text | default: 'READ LESS' }}
+          </span>
+        </button>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>

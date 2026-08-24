@@ -11,93 +11,33 @@
   "sections": {
     "section": {
       "type": "main-blog-post",
-      "blocks": {
-        "blog-post-title": {
-          "type": "text",
-          "static": true,
-          "settings": {
-            "text": "",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-details": {
-          "type": "_blog-post-info-text",
-          "static": true,
-          "settings": {
-            "show_date": true,
-            "show_author": true,
-            "type_preset": "",
-            "alignment": "left",
-            "text_color": "",
-            "show_alignment": true,
-            "padding-block-start": 24,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-image": {
-          "type": "image",
-          "name": "t:names.featured_image",
-          "settings": {
-            "image": "{{ article.image }}",
-            "link": "",
-            "image_ratio": "adapt",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-content": {
-          "type": "_blog-post-content",
-          "disabled": true,
-          "static": true,
-          "settings": {
-            "text_color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "blog-post-image"
-      ],
+      "settings": {}
+    },
+    "custom_blog_page_qaXRzr": {
+      "type": "custom-blog-page",
+      "name": "Custom Blog Post",
       "settings": {
-        "background_color": "{{ settings.color_palette.background }}"
+        "show_breadcrumbs": true,
+        "breadcrumb_title": "",
+        "eyebrow": "Hangover Prevention Tips: What to Do Before, During, and After Drinking",
+        "description": "<p><br/>Hangovers are the result of dehydration, vitamin depletion, and <br/>acetaldehyde buildup. With the right preparation, you can dramatically <br/>reduce the impact of a night out.<br/><br/></p>",
+        "author_name": "PartyPatch Editorial Team",
+        "show_author": true,
+        "show_date": true,
+        "date_text": "",
+        "show_read_time": true,
+        "read_time": "8 min read",
+        "image_alt": "Article featured image",
+        "background_color": "linear-gradient(135deg, rgba(255, 245, 215, 0.6), rgba(215, 245, 245, 0.6) 100%)",
+        "text_color": "#202124",
+        "image_radius": 18,
+        "padding_top": 48,
+        "padding_bottom": 64
       }
     }
   },
   "order": [
-    "section"
+    "section",
+    "custom_blog_page_qaXRzr"
   ]
 }

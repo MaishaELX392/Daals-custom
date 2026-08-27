@@ -560,6 +560,77 @@
       ],
       "name": "Benefits section",
       "settings": {}
+    },
+    "article_hangover_8riUkD": {
+      "type": "article-hangover",
+      "blocks": {
+        "content_zNwXDX": {
+          "type": "content",
+          "settings": {
+            "heading": "What Causes a Hangover?",
+            "content": "<p>A hangover is your body's response to the toxic effects of alcohol and its metabolites.</p>",
+            "anchor_id": "what-causes-a-hangover",
+            "navigation_title": "What Causes a Hangover?"
+          }
+        },
+        "content_GBPNU8": {
+          "type": "content",
+          "settings": {
+            "heading": "The Science Behind Hangover Patches",
+            "content": "<p>A hangover is your body's response to the toxic effects of alcohol and its metabolites.</p>",
+            "anchor_id": "science-behind-hangover-patches",
+            "navigation_title": "The Science Behind Hangover Patches"
+          }
+        },
+        "image_GDytxG": {
+          "type": "image",
+          "settings": {
+            "caption": "",
+            "anchor_id": "hangover-patch-image",
+            "navigation_title": "How to Use PartyPatch for Best Results"
+          }
+        },
+        "content_qMbpXN": {
+          "type": "content",
+          "settings": {
+            "heading": "Key Ingredients That Actually Work",
+            "content": "<p>A hangover is your body's response to the toxic effects of alcohol and its metabolites.</p>",
+            "anchor_id": "key-ingredients",
+            "navigation_title": "Key Ingredients That Actually Work"
+          }
+        },
+        "content_HUr79w": {
+          "type": "content",
+          "settings": {
+            "heading": "Reviews From Real Customers",
+            "content": "<p>A hangover is your body's response to the toxic effects of alcohol and its metabolites.</p>",
+            "anchor_id": "reviews",
+            "navigation_title": "Reviews From Real Customers"
+          }
+        },
+        "content_4BhrbB": {
+          "type": "content",
+          "settings": {
+            "heading": "Frequently Asked Questions",
+            "content": "<p>A hangover is your body's response to the toxic effects of alcohol and its metabolites.</p>",
+            "anchor_id": "faq",
+            "navigation_title": "Frequently Asked Questions"
+          }
+        }
+      },
+      "block_order": [
+        "content_zNwXDX",
+        "content_GBPNU8",
+        "image_GDytxG",
+        "content_qMbpXN",
+        "content_HUr79w",
+        "content_4BhrbB"
+      ],
+      "name": "Article Hangover",
+      "settings": {
+        "share_title": "Share This Article",
+        "jump_title": "Jump to Section"
+      }
     }
   },
   "order": [
@@ -569,6 +640,7 @@
     "custom_collection_slider_wFTqGg",
     "reviews_dnkkzr",
     "newsletter_section_HjXzQb",
-    "benefits_section_86i6Xi"
+    "benefits_section_86i6Xi",
+    "article_hangover_8riUkD"
   ]
 }

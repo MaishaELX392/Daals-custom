@@ -341,6 +341,12 @@
     "custom_collection_slider_wFTqGg": {
       "type": "custom-collection-slider",
       "blocks": {
+        "product_AWBRMz": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
         "product_6qQkFL": {
           "type": "product",
           "settings": {
@@ -415,6 +421,7 @@
         }
       },
       "block_order": [
+        "product_AWBRMz",
         "product_6qQkFL",
         "product_hybppQ",
         "product_i7L7MD",

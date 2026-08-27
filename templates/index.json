@@ -616,6 +616,15 @@
             "anchor_id": "faq",
             "navigation_title": "Frequently Asked Questions"
           }
+        },
+        "image_LTbWiL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hiker-running-up-beaten-track-between-the-trees.jpg",
+            "caption": "",
+            "anchor_id": "",
+            "navigation_title": ""
+          }
         }
       },
       "block_order": [
@@ -624,7 +633,8 @@
         "image_GDytxG",
         "content_qMbpXN",
         "content_HUr79w",
-        "content_4BhrbB"
+        "content_4BhrbB",
+        "image_LTbWiL"
       ],
       "name": "Article Hangover",
       "settings": {

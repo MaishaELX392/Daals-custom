@@ -564,6 +564,14 @@
     "article_hangover_8riUkD": {
       "type": "article-hangover",
       "blocks": {
+        "image_kJH4Yn": {
+          "type": "image",
+          "settings": {
+            "caption": "",
+            "anchor_id": "",
+            "navigation_title": ""
+          }
+        },
         "content_zNwXDX": {
           "type": "content",
           "settings": {
@@ -628,6 +636,7 @@
         }
       },
       "block_order": [
+        "image_kJH4Yn",
         "content_zNwXDX",
         "content_GBPNU8",
         "image_GDytxG",

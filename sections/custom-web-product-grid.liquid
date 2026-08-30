@@ -1,0 +1,243 @@
+{{ 'custom-web-product-grid.css' | asset_url | stylesheet_tag }}
+
+<script
+  src="{{ 'custom-web-product-grid.js' | asset_url }}"
+  defer
+></script>
+
+<section
+  id="CustomWebProductGrid-{{ section.id }}"
+  class="custom-web-product-grid"
+>
+  <div class="custom-web-product-grid__container">
+
+    {% if section.settings.heading != blank %}
+      <div class="custom-web-product-grid__header">
+        <h2 class="custom-web-product-grid__heading">
+          {{ section.settings.heading }}
+        </h2>
+
+        {% if section.settings.description != blank %}
+          <div class="custom-web-product-grid__description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% assign selected_collection = section.settings.collection %}
+
+    {% if selected_collection != blank %}
+      <custom-product-grid
+        data-section-id="{{ section.id }}"
+        data-products-per-page="{{ section.settings.products_to_show }}"
+      >
+
+        <div class="custom-web-product-grid__grid">
+
+          {% for product in selected_collection.products limit: section.settings.products_to_show %}
+
+            <custom-product-card
+              data-product-id="{{ product.id }}"
+              data-product-url="{{ product.url }}"
+            >
+
+              <article class="custom-product-card">
+
+                <a
+                  href="{{ product.url }}"
+                  class="custom-product-card__image-link"
+                >
+                  <div class="custom-product-card__image-wrapper">
+
+                    {% if product.featured_image %}
+                      {{
+                        product.featured_image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '300, 500, 700, 800',
+                          sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+                          class: 'custom-product-card__image'
+                      }}
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'custom-product-card__placeholder' }}
+                    {% endif %}
+
+                    {% if product.compare_at_price > product.price %}
+                      <span class="custom-product-card__badge">
+                        Sale
+                      </span>
+                    {% endif %}
+
+                  </div>
+                </a>
+
+                <div class="custom-product-card__content">
+
+                  <h3 class="custom-product-card__title">
+                    <a href="{{ product.url }}">
+                      {{ product.title }}
+                    </a>
+                  </h3>
+
+                  <div class="custom-product-card__price">
+
+                    {% if product.compare_at_price > product.price %}
+                      <span class="custom-product-card__price--sale">
+                        {{ product.price | money }}
+                      </span>
+
+                      <span class="custom-product-card__price--compare">
+                        {{ product.compare_at_price | money }}
+                      </span>
+                    {% else %}
+                      <span>
+                        {{ product.price | money }}
+                      </span>
+                    {% endif %}
+
+                  </div>
+
+                  {% unless product.has_only_default_variant %}
+
+                    <div class="custom-product-card__variants">
+
+                      {% for option in product.options_with_values %}
+
+                        {% if option.name == 'Color' or option.name == 'Colour' %}
+
+                          <div
+                            class="custom-product-card__swatches"
+                            data-option-name="{{ option.name }}"
+                          >
+
+                            {% for value in option.values %}
+
+                              <button
+                                type="button"
+                                class="custom-product-card__swatch{% if forloop.first %} is-selected{% endif %}"
+                                data-option-value="{{ value | escape }}"
+                                aria-label="{{ value | escape }}"
+                                title="{{ value | escape }}"
+                              >
+                                <span
+                                  class="custom-product-card__swatch-inner"
+                                  style="background-color: {{ value | downcase | replace: ' ', '' }};"
+                                ></span>
+                              </button>
+
+                            {% endfor %}
+
+                          </div>
+
+                        {% endif %}
+
+                      {% endfor %}
+
+                    </div>
+
+                  {% endunless %}
+
+                  {% if product.available %}
+
+                    <button
+                      type="button"
+                      class="custom-product-card__add"
+                      data-add-to-cart
+                    >
+                      <span data-button-text>
+                        Add to cart
+                      </span>
+
+                      <span
+                        class="custom-product-card__loader"
+                        data-loader
+                        hidden
+                      ></span>
+                    </button>
+
+                  {% else %}
+
+                    <button
+                      type="button"
+                      class="custom-product-card__add custom-product-card__add--sold-out"
+                      disabled
+                    >
+                      Sold out
+                    </button>
+
+                  {% endif %}
+
+                  <div
+                    class="custom-product-card__message"
+                    data-message
+                    aria-live="polite"
+                  ></div>
+
+                </div>
+
+              </article>
+
+            </custom-product-card>
+
+          {% else %}
+
+            <p class="custom-web-product-grid__empty">
+              No products found.
+            </p>
+
+          {% endfor %}
+
+        </div>
+
+      </custom-product-grid>
+
+    {% else %}
+
+      <div class="custom-web-product-grid__empty">
+        Select a collection from the theme editor.
+      </div>
+
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Web Product Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured products"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Web Product Grid"
+    }
+  ]
+}
+{% endschema %}

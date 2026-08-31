@@ -650,6 +650,16 @@
         "share_title": "Share This Article",
         "jump_title": "Jump to Section"
       }
+    },
+    "custom_web_product_grid_Lhxht8": {
+      "type": "custom-web-product-grid",
+      "name": "Custom Web Product Grid",
+      "settings": {
+        "heading": "Featured products",
+        "description": "",
+        "collection": "automated-collection",
+        "products_to_show": 8
+      }
     }
   },
   "order": [
@@ -660,6 +670,7 @@
     "reviews_dnkkzr",
     "newsletter_section_HjXzQb",
     "benefits_section_86i6Xi",
-    "article_hangover_8riUkD"
+    "article_hangover_8riUkD",
+    "custom_web_product_grid_Lhxht8"
   ]
 }
